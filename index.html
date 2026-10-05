@@ -377,53 +377,56 @@ h2 {
 
 /* ---------------- Saisonkalender ---------------- */
 
-.kalender-rahmen { overflow-x: auto; padding-bottom: 4px; }
-.kalender {
-  min-width: 720px;
+.kalender { display: grid; gap: 7px; }
+.kal-zeile {
   display: grid;
-  grid-template-columns: 215px repeat(8, 1fr);
-  gap: 7px 0;
+  grid-template-columns: 215px minmax(0, 1fr);
   align-items: center;
 }
-.kal-kopf {
+.kal-monate { display: grid; grid-template-columns: repeat(8, 1fr); }
+.kal-monate span {
   font-family: var(--daten);
   font-size: 14px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--gedaempft);
   text-align: center;
+}
+.kal-kopfzeile > div {
   padding-bottom: 10px;
   border-bottom: 1px solid var(--linie);
 }
-.kal-kopf:first-child { border-bottom: 1px solid var(--linie); }
 .kal-name {
   font-size: 17px;
   font-weight: 600;
   padding-right: 14px;
   white-space: nowrap;
+  min-width: 0;
 }
 .kal-spur {
-  grid-column: 2 / 10;
-  grid-row: var(--zeile);
+  position: relative;
   height: 32px;
   background: repeating-linear-gradient(to right, transparent 0, transparent calc(12.5% - 1px), var(--linie) calc(12.5% - 1px), var(--linie) 12.5%);
   border-radius: 4px;
 }
 .kal-balken {
-  grid-row: var(--zeile);
-  height: 32px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left:  calc((var(--von) - 1) / 8 * 100%);
+  width: calc((var(--bis) - var(--von)) / 8 * 100%);
   background: var(--rahmen);
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   font-family: var(--daten);
   font-size: 13px;
   font-weight: 500;
   color: #FFFFFF;
   letter-spacing: 0.03em;
-  position: relative;
-  z-index: 1;
+  white-space: nowrap;
 }
 .kal-balken.tief { background: var(--tief); }
 .kal-balken.oel  { background: #6E7F4E; }
@@ -581,11 +584,40 @@ footer a:hover { color: var(--akzent); }
   .leiste-nav { display: none; }
   .leiste-inhalt { justify-content: space-between; }
   .band-raster { grid-template-columns: 1fr; }
+  .kal-zeile { grid-template-columns: 150px minmax(0, 1fr); }
+  .kal-name { font-size: 16px; white-space: normal; }
+  .kal-monate span { font-size: 13px; }
+}
+
+/* Ab hier passt der Kalender nicht mehr neben die Sortennamen: Name wandert
+   über den Balken, der Balken bekommt die volle Breite. Gleiche Balken,
+   gleiche Farben, gleiche Monatsleiste — nur gestapelt. */
+@media (max-width: 640px) {
+  .kalender { gap: 15px; }
+  .kal-zeile { display: block; }
+  .kal-kopfzeile > div:first-child { display: none; }
+  .kal-name { margin-bottom: 5px; padding-right: 0; }
+  .kal-spur { height: 29px; }
+  .kal-balken { font-size: 12px; }
+  .kal-monate span { font-size: 12px; letter-spacing: 0.02em; }
+
+  /* Das Foto ist 3:2. In diesem Verhältnis wird nichts weggeschnitten —
+     auf dem Handy ist dieselbe Szene zu sehen wie auf dem Desktop. */
+  .hero-bild { height: auto; aspect-ratio: 3 / 2; }
 }
 
 @media (max-width: 460px) {
   .leiste img { width: 86px; }
   .band-zahl { font-size: 26px; }
+  .kal-name { font-size: 15.5px; }
+  .kal-balken { font-size: 11px; letter-spacing: 0; }
+  .kal-monate span { font-size: 11px; letter-spacing: 0; }
+}
+
+/* Sehr schmale Geräte (320px, altes iPhone SE, kleine Androiden) */
+@media (max-width: 360px) {
+  .kal-balken { font-size: 10px; }
+  .kal-monate span { font-size: 10px; }
 }
 </style>
 </head>
@@ -673,57 +705,54 @@ footer a:hover { color: var(--akzent); }
       <p>Zitrusfrüchte haben enge Fenster. Die Tarocco ist im Februar am besten, die Zitronen gibt es schon im Oktober, und die späte Navel kommt erst, wenn die frühe längst vorbei ist.</p>
     </div>
 
-    <div class="kalender-rahmen">
-      <div class="kalender">
-        <div class="kal-kopf"></div>
-        <div class="kal-kopf">Okt</div>
-        <div class="kal-kopf">Nov</div>
-        <div class="kal-kopf">Dez</div>
-        <div class="kal-kopf">Jan</div>
-        <div class="kal-kopf">Feb</div>
-        <div class="kal-kopf">Mär</div>
-        <div class="kal-kopf">Apr</div>
-        <div class="kal-kopf">Mai</div>
+    <div class="kalender">
+      <div class="kal-zeile kal-kopfzeile">
+        <div></div>
+        <div class="kal-monate">
+          <span>Okt</span><span>Nov</span><span>Dez</span><span>Jan</span>
+          <span>Feb</span><span>Mär</span><span>Apr</span><span>Mai</span>
+        </div>
+      </div>
 
-        <div class="kal-name" style="grid-row:2">Tarocco-Blutorangen</div>
-        <div class="kal-spur" style="--zeile:2"></div>
-        <div class="kal-balken tief" style="--zeile:2; grid-column:4/9">Dez – Apr</div>
-
-        <div class="kal-name" style="grid-row:3">Tarocco-Saftorangen</div>
-        <div class="kal-spur" style="--zeile:3"></div>
-        <div class="kal-balken tief" style="--zeile:3; grid-column:4/9">Dez – Apr</div>
-
-        <div class="kal-name" style="grid-row:4">Navel (Navelina)</div>
-        <div class="kal-spur" style="--zeile:4"></div>
-        <div class="kal-balken" style="--zeile:4; grid-column:3/6">Nov – Jan</div>
-
-        <div class="kal-name" style="grid-row:5">Navel (Lane-Late)</div>
-        <div class="kal-spur" style="--zeile:5"></div>
-        <div class="kal-balken" style="--zeile:5; grid-column:7/10">Mär – Mai</div>
-
-        <div class="kal-name" style="grid-row:6">Vanilleorangen</div>
-        <div class="kal-spur" style="--zeile:6"></div>
-        <div class="kal-balken" style="--zeile:6; grid-column:4/9">Dez – Apr</div>
-
-        <div class="kal-name" style="grid-row:7">Clementinen</div>
-        <div class="kal-spur" style="--zeile:7"></div>
-        <div class="kal-balken" style="--zeile:7; grid-column:4/6">Dez – Jan</div>
-
-        <div class="kal-name" style="grid-row:8">Zitronen</div>
-        <div class="kal-spur" style="--zeile:8"></div>
-        <div class="kal-balken" style="--zeile:8; grid-column:2/6">Okt – Jan</div>
-
-        <div class="kal-name" style="grid-row:9">Cedro</div>
-        <div class="kal-spur" style="--zeile:9"></div>
-        <div class="kal-balken" style="--zeile:9; grid-column:3/7">Nov – Feb</div>
-
-        <div class="kal-name" style="grid-row:10">Grapefruit</div>
-        <div class="kal-spur" style="--zeile:10"></div>
-        <div class="kal-balken" style="--zeile:10; grid-column:4/9">Dez – Apr</div>
-
-        <div class="kal-name" style="grid-row:11">Natives Olivenöl extra</div>
-        <div class="kal-spur" style="--zeile:11"></div>
-        <div class="kal-balken oel" style="--zeile:11; grid-column:2/4">Ernte Okt – Nov</div>
+      <div class="kal-zeile">
+        <div class="kal-name">Tarocco-Blutorangen</div>
+        <div class="kal-spur"><div class="kal-balken tief" style="--von:3; --bis:8">Dez – Apr</div></div>
+      </div>
+      <div class="kal-zeile">
+        <div class="kal-name">Tarocco-Saftorangen</div>
+        <div class="kal-spur"><div class="kal-balken tief" style="--von:3; --bis:8">Dez – Apr</div></div>
+      </div>
+      <div class="kal-zeile">
+        <div class="kal-name">Navel (Navelina)</div>
+        <div class="kal-spur"><div class="kal-balken" style="--von:2; --bis:5">Nov – Jan</div></div>
+      </div>
+      <div class="kal-zeile">
+        <div class="kal-name">Navel (Lane-Late)</div>
+        <div class="kal-spur"><div class="kal-balken" style="--von:6; --bis:9">Mär – Mai</div></div>
+      </div>
+      <div class="kal-zeile">
+        <div class="kal-name">Vanilleorangen</div>
+        <div class="kal-spur"><div class="kal-balken" style="--von:3; --bis:8">Dez – Apr</div></div>
+      </div>
+      <div class="kal-zeile">
+        <div class="kal-name">Clementinen</div>
+        <div class="kal-spur"><div class="kal-balken" style="--von:3; --bis:5">Dez – Jan</div></div>
+      </div>
+      <div class="kal-zeile">
+        <div class="kal-name">Zitronen</div>
+        <div class="kal-spur"><div class="kal-balken" style="--von:1; --bis:5">Okt – Jan</div></div>
+      </div>
+      <div class="kal-zeile">
+        <div class="kal-name">Cedro</div>
+        <div class="kal-spur"><div class="kal-balken" style="--von:2; --bis:6">Nov – Feb</div></div>
+      </div>
+      <div class="kal-zeile">
+        <div class="kal-name">Grapefruit</div>
+        <div class="kal-spur"><div class="kal-balken" style="--von:3; --bis:8">Dez – Apr</div></div>
+      </div>
+      <div class="kal-zeile">
+        <div class="kal-name">Natives Olivenöl extra</div>
+        <div class="kal-spur"><div class="kal-balken oel" style="--von:1; --bis:3">Okt – Nov</div></div>
       </div>
     </div>
 
