@@ -619,6 +619,18 @@ footer a:hover { color: var(--akzent); }
   .kal-balken { font-size: 10px; }
   .kal-monate span { font-size: 10px; }
 }
+
+/* ---------------- Breit ---------------- */
+/* Grosse Monitore: nur die Inhaltsspalte darf mitwachsen, damit der Text
+   auf einem Ultrawide nicht als schmale Insel in der Mitte klebt.
+   Das Hero-Bild bleibt unangetastet. */
+@media (min-width: 1500px) {
+  .spalte { max-width: 1340px; }
+}
+
+@media (min-width: 2200px) {
+  .spalte { max-width: 1500px; }
+}
 </style>
 </head>
 <body>
