@@ -1,77 +1,1028 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-  <title>Zitrusfrüchte aus Sizilien – Familie La Rocca</title>
-  <meta name="description" content="Sonnengereifte Zitrusfrüchte und kaltgepresstes Olivenöl aus Sizilien. Jetzt für die nächste Lieferung vorbestellen.">
+<title>La Rocca – Zitrusfrüchte aus Sizilien</title>
+<meta name="description" content="Sonnengereifte Zitrusfrüchte und kaltgepresstes Olivenöl aus Sizilien. Auf Vorbestellung, zur Abholung in Hainburg.">
 
-  <!-- Vorschau in WhatsApp, Instagram und Co. -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Familie La Rocca">
-  <meta property="og:url" content="https://larocca-sicilia.de/">
-  <meta property="og:title" content="Zitrusfrüchte aus Sizilien">
-  <meta property="og:description" content="Sonnengereifte Zitrusfrüchte und kaltgepresstes Olivenöl – jetzt vorbestellen.">
-  <meta property="og:image" content="https://i.postimg.cc/jSGnf9L6/larocca-sicilia.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="La Rocca">
+<meta property="og:url" content="https://larocca-sicilia.de/">
+<meta property="og:title" content="Zitrusfrüchte aus Sizilien">
+<meta property="og:description" content="Sonnengereift am Ätna, frisch geerntet, auf Vorbestellung nach Hainburg.">
+<meta property="og:image" content="https://larocca-sicilia.de/bilder/etna.jpg">
+<meta property="og:image:width" content="1400">
+<meta property="og:image:height" content="933">
+<meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" href="https://i.postimg.cc/jSGnf9L6/larocca-sicilia.png">
+<link rel="icon" href="bilder/logo.png">
+<link rel="apple-touch-icon" href="bilder/app-icon.png">
+<meta name="apple-mobile-web-app-title" content="La Rocca">
 
-  <!-- Symbol beim "Zum Home-Bildschirm hinzufügen" -->
-  <link rel="apple-touch-icon" href="https://i.postimg.cc/WpFd5zcs/app-icon.png">
-  <meta name="apple-mobile-web-app-title" content="La Rocca">
+<style>
+/* Schriften liegen auf unserem eigenen Server – keine Verbindung zu Google */
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('schriften/source-sans-3-latin-400-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('schriften/source-sans-3-latin-ext-400-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('schriften/source-sans-3-latin-600-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('schriften/source-sans-3-latin-ext-600-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('schriften/source-sans-3-latin-700-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('schriften/source-sans-3-latin-ext-700-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('schriften/source-sans-3-latin-900-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('schriften/source-sans-3-latin-ext-900-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('schriften/ibm-plex-mono-latin-500-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('schriften/ibm-plex-mono-latin-ext-500-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: #fdf2e9;
-      overflow: hidden;
-    }
-    #laden {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      font-weight: bold;
-      color: #d35400;
-      background: #fdf2e9;
-      z-index: 1;
-    }
-    #formular {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-      z-index: 2;
-      background: #fdf2e9;
-    }
-  </style>
+/* Aufbau: durchgehende Bänder über die volle Breite, Inhalt in einer Spalte von 1080px,
+   dazwischen der Saisonkalender als breites Raster. */
+/* Bewusst einfarbig hell: die Seite sieht auf jedem Gerät gleich aus,
+   auch wenn das System auf Dunkelmodus steht. */
+:root {
+  --grund:     #FDF2E9;
+  --flaeche:   #F5EDE3;
+  --linie:     #E2CBB2;
+  --rahmen:    #E67E22;
+  --akzent:    #C44E00;
+  --tief:      #A8352A;
+  --text:      #241509;
+  --gedaempft: #5A4535;
+
+  --schrift: 'Source Sans 3', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --daten:   'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--grund);
+  color: var(--text);
+  font-family: var(--schrift);
+  font-size: 19px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+img { max-width: 100%; }
+
+.spalte {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-inline: 20px;
+}
+
+/* ---------------- Kopfleiste ---------------- */
+
+.leiste {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  background: color-mix(in srgb, var(--grund) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--linie);
+}
+.leiste-inhalt {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-block: 11px;
+}
+.leiste img { width: 124px; display: block; }
+.leiste-marke {
+  background: #FFFFFF;
+  border: 2px solid var(--rahmen);
+  border-radius: 10px;
+  padding: 6px 11px;
+  line-height: 0;
+  flex: none;
+}
+
+.leiste-nav {
+  display: flex;
+  gap: 30px;
+  margin-inline: auto;
+}
+.leiste-nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600;
+  padding-block: 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color .15s ease, color .15s ease;
+}
+.leiste-nav a:hover { color: var(--akzent); border-bottom-color: var(--rahmen); }
+
+.fuss-marke {
+  background: #FFFFFF;
+  border: 2px solid var(--rahmen);
+  border-radius: 10px;
+  padding: 8px 13px;
+  line-height: 0;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.fuss-marke img { width: 150px; display: block; }
+
+.knopf {
+  display: inline-block;
+  background: var(--akzent);
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 10px;
+  border: 2px solid var(--akzent);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.knopf:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(211, 84, 0, .3); }
+.knopf:active { transform: translateY(0); }
+.knopf-klein { font-size: 17px; padding: 11px 20px; }
+.knopf-gross { font-size: 21px; padding: 18px 36px; }
+
+/* ---------------- Hero ---------------- */
+
+.hero-bild {
+  display: block;
+  width: 100%;
+  height: clamp(340px, 56vh, 620px);
+  object-fit: cover;
+  object-position: 50% 42%;
+  border-bottom: 3px solid var(--rahmen);
+}
+.bildhinweis {
+  font-size: 13.5px;
+  color: var(--gedaempft);
+  opacity: .8;
+}
+.hero-hinweis {
+  display: block;
+  padding-block: 7px 0;
+  text-align: right;
+}
+
+.hero-text {
+  display: grid;
+  grid-template-columns: 1.08fr .92fr;
+  gap: 20px 56px;
+  align-items: end;
+  padding-block: 56px 64px;
+}
+.hero-links { min-width: 0; }
+.hero-rechts { min-width: 0; }
+.ueberzeile {
+  font-family: var(--daten);
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--tief);
+  display: block;
+  margin-bottom: 14px;
+}
+.hero-text h1 {
+  font-size: clamp(38px, 5.9vw, 68px);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+.hero-strich {
+  width: 62px;
+  height: 4px;
+  background: var(--rahmen);
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+.hero-rechts p {
+  font-size: clamp(18px, 1.9vw, 21px);
+  line-height: 1.55;
+  color: var(--gedaempft);
+}
+.hero-rechts .knopf { margin-top: 24px; }
+.hero-notiz {
+  margin-top: 12px;
+  font-size: 16px;
+  color: var(--gedaempft);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-bild { animation: zoom 1.4s cubic-bezier(.2, .7, .3, 1) backwards; }
+  .hero-links { animation: auf .7s cubic-bezier(.2, .7, .3, 1) .12s backwards; }
+  .hero-rechts { animation: auf .7s cubic-bezier(.2, .7, .3, 1) .24s backwards; }
+  @keyframes auf {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: none; }
+  }
+  @keyframes zoom {
+    from { opacity: 0; transform: scale(1.04); }
+    to   { opacity: 1; transform: none; }
+  }
+}
+
+/* ---------------- Zahlenband ---------------- */
+
+.band {
+  background: var(--flaeche);
+  border-bottom: 1px solid var(--linie);
+}
+.band-raster {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--linie);
+  margin-inline: -1px;
+}
+.band-feld {
+  background: var(--flaeche);
+  padding: 26px 20px;
+  text-align: center;
+}
+.band-zahl {
+  font-family: var(--daten);
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--akzent);
+  line-height: 1;
+}
+.band-wort {
+  margin-top: 8px;
+  font-size: 16px;
+  color: var(--gedaempft);
+  line-height: 1.4;
+}
+
+/* ---------------- Abschnitte ---------------- */
+
+section { padding-block: 62px; }
+
+.kopfzeile { margin-bottom: 34px; max-width: 620px; }
+.marke {
+  scroll-margin-top: 110px;
+  font-family: var(--daten);
+  font-size: 13.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--tief);
+  display: block;
+  margin-bottom: 10px;
+}
+h2 {
+  font-size: clamp(27px, 3.6vw, 36px);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+.kopfzeile p {
+  margin-top: 12px;
+  color: var(--gedaempft);
+}
+
+/* ---------------- Ablauf ---------------- */
+
+.schritte {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.schritt {
+  border-top: 3px solid var(--rahmen);
+  padding-top: 18px;
+  min-width: 0;
+}
+.schritt-nr {
+  font-family: var(--daten);
+  font-size: 13px;
+  color: var(--tief);
+  letter-spacing: 0.1em;
+}
+.schritt h3 { margin-top: 7px; font-size: 22px; font-weight: 700; }
+.schritt p { margin-top: 8px; font-size: 17.5px; color: var(--gedaempft); line-height: 1.6; }
+
+/* ---------------- Saisonkalender ---------------- */
+
+.kalender-rahmen { overflow-x: auto; padding-bottom: 4px; }
+.kalender {
+  min-width: 720px;
+  display: grid;
+  grid-template-columns: 215px repeat(8, 1fr);
+  gap: 7px 0;
+  align-items: center;
+}
+.kal-kopf {
+  font-family: var(--daten);
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gedaempft);
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--linie);
+}
+.kal-kopf:first-child { border-bottom: 1px solid var(--linie); }
+.kal-name {
+  font-size: 17px;
+  font-weight: 600;
+  padding-right: 14px;
+  white-space: nowrap;
+}
+.kal-spur {
+  grid-column: 2 / 10;
+  grid-row: var(--zeile);
+  height: 32px;
+  background: repeating-linear-gradient(to right, transparent 0, transparent calc(12.5% - 1px), var(--linie) calc(12.5% - 1px), var(--linie) 12.5%);
+  border-radius: 4px;
+}
+.kal-balken {
+  grid-row: var(--zeile);
+  height: 32px;
+  background: var(--rahmen);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--daten);
+  font-size: 13px;
+  font-weight: 500;
+  color: #FFFFFF;
+  letter-spacing: 0.03em;
+  position: relative;
+  z-index: 1;
+}
+.kal-balken.tief { background: var(--tief); }
+.kal-balken.oel  { background: #6E7F4E; }
+.kalender-notiz {
+  margin-top: 20px;
+  font-size: 16.5px;
+  color: var(--gedaempft);
+}
+
+/* ---------------- Sorten ---------------- */
+
+.sorten {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(238px, 1fr));
+  gap: 20px;
+}
+.sorte {
+  background: var(--flaeche);
+  border: 2px solid var(--rahmen);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: box-shadow .18s ease;
+  min-width: 0;
+  align-self: start;
+}
+.sorte:hover { box-shadow: 0 8px 22px rgba(42, 26, 18, .12); }
+.sorte img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+.sorte-text { padding: 14px 16px 17px; }
+.sorte h3 { font-size: 19px; font-weight: 700; }
+.sorte-saison {
+  font-family: var(--daten);
+  font-size: 13px;
+  color: var(--tief);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+.sorte p { margin-top: 9px; font-size: 16.5px; color: var(--gedaempft); line-height: 1.55; }
+
+.sorte-mehr { margin-top: 14px; border-top: 1px solid var(--linie); }
+.sorte-mehr summary {
+  list-style: none;
+  cursor: pointer;
+  padding-top: 11px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--akzent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sorte-mehr summary::-webkit-details-marker { display: none; }
+.sorte-mehr summary::after {
+  content: "";
+  width: 9px; height: 9px;
+  border-right: 2.5px solid currentColor;
+  border-bottom: 2.5px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform .18s ease;
+}
+.sorte-mehr[open] summary::after { transform: rotate(-135deg) translate(-3px, -3px); }
+.sorte-mehr summary:focus-visible { outline: 2px solid var(--rahmen); outline-offset: 3px; border-radius: 4px; }
+
+.sorte-mehr dl {
+  margin: 12px 0 4px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 7px 14px;
+  font-size: 15.5px;
+  line-height: 1.5;
+}
+.sorte-mehr dt { font-weight: 700; color: var(--text); white-space: nowrap; }
+.sorte-mehr dd { margin: 0; color: var(--gedaempft); min-width: 0; }
+
+/* ---------------- Geschichte ---------------- */
+
+.geschichte {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 42px;
+  align-items: center;
+}
+.geschichte-text p + p { margin-top: 14px; }
+.geschichte-bild {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid var(--rahmen);
+  aspect-ratio: 3 / 2;
+}
+.geschichte-bild img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.platzhalter {
+  background: #FFF0A8;
+  color: #4A3A00;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+/* ---------------- Abholung ---------------- */
+
+.abholen {
+  background: var(--flaeche);
+  border-top: 1px solid var(--linie);
+  border-bottom: 1px solid var(--linie);
+}
+.abhol-raster {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.abhol-feld h3 {
+  font-family: var(--daten);
+  font-size: 13.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tief);
+  margin-bottom: 9px;
+}
+.abhol-feld p { line-height: 1.6; }
+.abhol-feld a { color: var(--text); text-decoration-color: var(--rahmen); text-underline-offset: 3px; }
+
+/* ---------------- Schluss ---------------- */
+
+.schluss { padding-block: 58px; text-align: center; }
+.schluss h2 { margin-bottom: 10px; }
+.schluss p { color: var(--gedaempft); max-width: 460px; margin: 0 auto 26px; }
+
+footer {
+  border-top: 1px solid var(--linie);
+  padding-block: 26px 40px;
+  font-size: 16px;
+  color: var(--gedaempft);
+}
+.fuss {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  align-items: center;
+  justify-content: space-between;
+}
+.fuss-links { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; }
+footer a { color: var(--gedaempft); text-decoration-color: var(--linie); text-underline-offset: 3px; }
+footer a:hover { color: var(--akzent); }
+.insta { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; text-decoration: none; }
+.insta svg { width: 18px; height: 18px; }
+
+/* ---------------- Schmal ---------------- */
+
+@media (max-width: 860px) {
+  .geschichte { grid-template-columns: 1fr; gap: 26px; }
+  .geschichte-bild { order: -1; }
+  .schritte { grid-template-columns: 1fr; gap: 24px; }
+  .abhol-raster { grid-template-columns: 1fr; gap: 26px; }
+  section { padding-block: 46px; }
+  .hero-text { grid-template-columns: 1fr; gap: 24px; padding-block: 34px 44px; }
+  .leiste-nav { display: none; }
+  .leiste-inhalt { justify-content: space-between; }
+  .band-raster { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 460px) {
+  .leiste img { width: 86px; }
+  .band-zahl { font-size: 26px; }
+}
+</style>
 </head>
 <body>
+<header class="leiste">
+  <div class="spalte leiste-inhalt">
+    <span class="leiste-marke"><img src="bilder/logo.png" alt="La Rocca"></span>
+    <nav class="leiste-nav">
+      <a href="#ablauf">Ablauf</a>
+      <a href="#saison">Saison</a>
+      <a href="#sortiment">Sortiment</a>
+      <a href="#abholung">Abholung</a>
+    </nav>
+    <a class="knopf knopf-klein" href="bestellen/">Vorbestellen</a>
+  </div>
+</header>
 
-  <div id="laden">Einen Moment …</div>
+<img class="hero-bild" src="bilder/etna.jpg" alt="Orange am Baum vor dem Ätna">
+<div class="spalte"><span class="bildhinweis hero-hinweis">Symbolbild, KI-generiert</span></div>
 
-  <iframe
-    id="formular"
-    src="https://script.google.com/macros/s/AKfycbwqmzzx5abuDxQo4bh8SDc72g_uyU2PuiguBdLNrqLWCYlBJ-joYypsgjv00tu_-9lT/exec"
-    title="Bestellformular"
-    allow="clipboard-write"></iframe>
+<div class="spalte hero-text">
+  <div class="hero-links">
+    <span class="ueberzeile">Francofonte · Sizilien</span>
+    <div class="hero-strich"></div>
+    <h1>Die Nächte am Ätna machen sie rot.</h1>
+  </div>
+  <div class="hero-rechts">
+    <p>Blutorangen brauchen den Temperatursturz zwischen Tag und Nacht an den Hängen des Vulkans. Wir holen sie von dort und bringen sie nach Hainburg.</p>
+    <a class="knopf knopf-gross" href="bestellen/">Jetzt vorbestellen</a>
+    <p class="hero-notiz">Keine Mindestmenge. Bezahlt wird bei der Abholung.</p>
+  </div>
+</div>
 
-  <script>
-    document.getElementById('formular').addEventListener('load', function () {
-      var l = document.getElementById('laden');
-      if (l) { l.style.display = 'none'; }
-    });
-  </script>
+<div class="band">
+  <div class="spalte">
+    <div class="band-raster">
+      <div class="band-feld">
+        <div class="band-zahl">2</div>
+        <div class="band-wort">Generationen,<br>seit unserem Opa</div>
+      </div>
+      <div class="band-feld">
+        <div class="band-zahl">10</div>
+        <div class="band-wort">Sorten über<br>die ganze Saison</div>
+      </div>
+      <div class="band-feld">
+        <div class="band-zahl">1</div>
+        <div class="band-wort">Lieferant, den<br>wir persönlich kennen</div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<section>
+  <div class="spalte">
+    <div class="kopfzeile">
+      <span class="marke" id="ablauf">Ablauf</span>
+      <h2>Erst bestellt, dann geerntet</h2>
+      <p>Wir halten kein Lager. Was ihr bestellt, wird kurz vor der Fahrt gepflückt — deshalb gibt es nur Vorbestellung und feste Abholtage.</p>
+    </div>
+    <ol class="schritte">
+      <li class="schritt">
+        <div class="schritt-nr">01</div>
+        <h3>Online bestellen</h3>
+        <p>Sorten und Mengen auswählen, abschicken. Die Bestätigung kommt sofort per E-Mail.</p>
+      </li>
+      <li class="schritt">
+        <div class="schritt-nr">02</div>
+        <h3>Wir fahren los</h3>
+        <p>Nach Bestellschluss geht die Sammelbestellung nach Francofonte. Geerntet wird am Tag davor.</p>
+      </li>
+      <li class="schritt">
+        <div class="schritt-nr">03</div>
+        <h3>Abholen</h3>
+        <p>Am Abholtag kommt ihr vorbei, wir tragen die Kisten ins Auto, bezahlt wird vor Ort.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="spalte">
+    <div class="kopfzeile">
+      <span class="marke" id="saison">Saison</span>
+      <h2>Wann es was gibt</h2>
+      <p>Zitrusfrüchte haben enge Fenster. Die Tarocco ist im Februar am besten, die Zitronen gibt es schon im Oktober, und die späte Navel kommt erst, wenn die frühe längst vorbei ist.</p>
+    </div>
+
+    <div class="kalender-rahmen">
+      <div class="kalender">
+        <div class="kal-kopf"></div>
+        <div class="kal-kopf">Okt</div>
+        <div class="kal-kopf">Nov</div>
+        <div class="kal-kopf">Dez</div>
+        <div class="kal-kopf">Jan</div>
+        <div class="kal-kopf">Feb</div>
+        <div class="kal-kopf">Mär</div>
+        <div class="kal-kopf">Apr</div>
+        <div class="kal-kopf">Mai</div>
+
+        <div class="kal-name" style="grid-row:2">Tarocco-Blutorangen</div>
+        <div class="kal-spur" style="--zeile:2"></div>
+        <div class="kal-balken tief" style="--zeile:2; grid-column:4/9">Dez – Apr</div>
+
+        <div class="kal-name" style="grid-row:3">Tarocco-Saftorangen</div>
+        <div class="kal-spur" style="--zeile:3"></div>
+        <div class="kal-balken tief" style="--zeile:3; grid-column:4/9">Dez – Apr</div>
+
+        <div class="kal-name" style="grid-row:4">Navel (Navelina)</div>
+        <div class="kal-spur" style="--zeile:4"></div>
+        <div class="kal-balken" style="--zeile:4; grid-column:3/6">Nov – Jan</div>
+
+        <div class="kal-name" style="grid-row:5">Navel (Lane-Late)</div>
+        <div class="kal-spur" style="--zeile:5"></div>
+        <div class="kal-balken" style="--zeile:5; grid-column:7/10">Mär – Mai</div>
+
+        <div class="kal-name" style="grid-row:6">Vanilleorangen</div>
+        <div class="kal-spur" style="--zeile:6"></div>
+        <div class="kal-balken" style="--zeile:6; grid-column:4/9">Dez – Apr</div>
+
+        <div class="kal-name" style="grid-row:7">Clementinen</div>
+        <div class="kal-spur" style="--zeile:7"></div>
+        <div class="kal-balken" style="--zeile:7; grid-column:4/6">Dez – Jan</div>
+
+        <div class="kal-name" style="grid-row:8">Zitronen</div>
+        <div class="kal-spur" style="--zeile:8"></div>
+        <div class="kal-balken" style="--zeile:8; grid-column:2/6">Okt – Jan</div>
+
+        <div class="kal-name" style="grid-row:9">Cedro</div>
+        <div class="kal-spur" style="--zeile:9"></div>
+        <div class="kal-balken" style="--zeile:9; grid-column:3/7">Nov – Feb</div>
+
+        <div class="kal-name" style="grid-row:10">Grapefruit</div>
+        <div class="kal-spur" style="--zeile:10"></div>
+        <div class="kal-balken" style="--zeile:10; grid-column:4/9">Dez – Apr</div>
+
+        <div class="kal-name" style="grid-row:11">Natives Olivenöl extra</div>
+        <div class="kal-spur" style="--zeile:11"></div>
+        <div class="kal-balken oel" style="--zeile:11; grid-column:2/4">Ernte Okt – Nov</div>
+      </div>
+    </div>
+
+    <p class="kalender-notiz">Richtwerte aus Sizilien. Welche Sorten bei der nächsten Lieferung tatsächlich dabei sind, steht im Bestellformular.</p>
+  </div>
+</section>
+
+<section>
+  <div class="spalte">
+    <div class="kopfzeile">
+      <span class="marke" id="sortiment">Sortiment</span>
+      <h2>Zehn Sorten</h2>
+      <p>Alles aus derselben Gegend, alles vom selben Betrieb. Preise und Verfügbarkeit stehen im Formular, weil sie sich jede Lieferung ändern.</p>
+    </div>
+
+    <div class="sorten">
+      <article class="sorte">
+        <img src="bilder/tarocco.jpg" alt="Tarocco-Blutorangen">
+        <div class="sorte-text">
+          <h3>Tarocco-Blutorangen</h3>
+          <div class="sorte-saison">Dez – Apr</div>
+          <p>Süß mit feiner Säure, Note von roten Beeren. So gut wie kernlos.</p>
+          <details class="sorte-mehr">
+            <summary>Mehr erfahren</summary>
+            <dl>
+            <dt>Geschmack</dt><dd>Süß und saftig mit feiner Säure, Note von roten Beeren.</dd>
+            <dt>Farbe</dt><dd>Goldorange bis tiefrot, je nach Nachtfrost am Ätna.</dd>
+            <dt>Kerne</dt><dd>So gut wie keine.</dd>
+            <dt>Saison</dt><dd>Dezember bis April, am besten Januar bis März.</dd>
+            <dt>Lagerung</dt><dd>Kühl und luftig, 1–2 Wochen haltbar.</dd>
+            </dl>
+          </details>
+        </div>
+      </article>
+      <article class="sorte">
+        <img src="bilder/saftorangen.jpg" alt="Tarocco-Saftorangen">
+        <div class="sorte-text">
+          <h3>Tarocco-Saftorangen</h3>
+          <div class="sorte-saison">Dez – Apr</div>
+          <p>Dieselbe Sorte in kleinerem Kaliber, kräftig und sehr saftig.</p>
+          <details class="sorte-mehr">
+            <summary>Mehr erfahren</summary>
+            <dl>
+            <dt>Geschmack</dt><dd>Kräftig und süß, sehr saftig.</dd>
+            <dt>Farbe</dt><dd>Rot wie die Tarocco zum Verzehr, nur kleinere Früchte.</dd>
+            <dt>Kerne</dt><dd>So gut wie keine.</dd>
+            <dt>Saison</dt><dd>Dezember bis April.</dd>
+            <dt>Lagerung</dt><dd>Kühl und luftig, 1–2 Wochen haltbar.</dd>
+            </dl>
+          </details>
+        </div>
+      </article>
+      <article class="sorte">
+        <img src="bilder/navel.jpg" alt="Navel (Navelina)">
+        <div class="sorte-text">
+          <h3>Navel (Navelina)</h3>
+          <div class="sorte-saison">Nov – Jan</div>
+          <p>Mild und süß, kernlos, leicht zu schälen. Die frühe Navel.</p>
+          <details class="sorte-mehr">
+            <summary>Mehr erfahren</summary>
+            <dl>
+            <dt>Geschmack</dt><dd>Süß und mild, wenig Säure, sehr saftig.</dd>
+            <dt>Farbe</dt><dd>Kräftig orange, Fruchtfleisch hell.</dd>
+            <dt>Kerne</dt><dd>Keine, lässt sich leicht schälen.</dd>
+            <dt>Saison</dt><dd>November bis Januar, die frühe Navel.</dd>
+            <dt>Lagerung</dt><dd>Kühl und luftig, rund 2 Wochen haltbar.</dd>
+            </dl>
+          </details>
+        </div>
+      </article>
+      <article class="sorte">
+        <img src="bilder/navel.jpg" alt="Navel (Lane-Late)">
+        <div class="sorte-text">
+          <h3>Navel (Lane-Late)</h3>
+          <div class="sorte-saison">Mär – Mai</div>
+          <p>Etwas kräftiger, dünnere Schale. Kommt, wenn die anderen durch sind.</p>
+          <details class="sorte-mehr">
+            <summary>Mehr erfahren</summary>
+            <dl>
+            <dt>Geschmack</dt><dd>Süß und ausgewogen, etwas kräftiger als die Navelina.</dd>
+            <dt>Farbe</dt><dd>Tieforange, dünnere Schale.</dd>
+            <dt>Kerne</dt><dd>Keine, lässt sich leicht schälen.</dd>
+            <dt>Saison</dt><dd>März bis Mai, die späte Navel.</dd>
+            <dt>Lagerung</dt><dd>Kühl und luftig, rund 2 Wochen haltbar.</dd>
+            </dl>
+          </details>
+        </div>
+      </article>
+      <article class="sorte">
+        <img src="bilder/vanille.jpg" alt="Vanilleorangen">
+        <div class="sorte-text">
+          <h3>Vanilleorangen</h3>
+          <div class="sorte-saison">Dez – Apr</div>
+          <p>Fast ohne Säure, sehr mild, mit einer Note von Vanille.</p>
+          <details class="sorte-mehr">
+            <summary>Mehr erfahren</summary>
+            <dl>
+            <dt>Geschmack</dt><dd>Sehr mild, fast ohne Säure, Note von Vanille.</dd>
+            <dt>Farbe</dt><dd>Hellorange, Fruchtfleisch blass.</dd>
+            <dt>Kerne</dt><dd>Keine.</dd>
+            <dt>Saison</dt><dd>Dezember bis April.</dd>
+            <dt>Lagerung</dt><dd>Kühl und luftig, 1–2 Wochen haltbar.</dd>
+            </dl>
+          </details>
+        </div>
+      </article>
+      <article class="sorte">
+        <img src="bilder/clementinen.jpg" alt="Clementinen">
+        <div class="sorte-text">
+          <h3>Clementinen</h3>
+          <div class="sorte-saison">Dez – Jan</div>
+          <p>Süß, aromatisch, sehr saftig. Das kürzeste Fenster von allen.</p>
+          <details class="sorte-mehr">
+            <summary>Mehr erfahren</summary>
+            <dl>
+            <dt>Geschmack</dt><dd>Süß, aromatisch und sehr saftig.</dd>
+            <dt>Farbe</dt><dd>Tieforange, Schale liegt fester an.</dd>
+            <dt>Kerne</dt><dd>Meist keine, je nach Bestäubung einzelne möglich.</dd>
+            <dt>Saison</dt><dd>Dezember bis Januar.</dd>
+            <dt>Lagerung</dt><dd>Kühl und luftig, am besten innerhalb einer Woche.</dd>
+            </dl>
+          </details>
+        </div>
+      </article>
+      <article class="sorte">
+        <img src="bilder/zitronen.jpg" alt="Zitronen">
+        <div class="sorte-text">
+          <h3>Zitronen</h3>
+          <div class="sorte-saison">Okt – Jan</div>
+          <p>Intensiv duftende Schale, saftig. Die erste Ernte des Jahres.</p>
+          <details class="sorte-mehr">
+            <summary>Mehr erfahren</summary>
+            <dl>
+            <dt>Geschmack</dt><dd>Aromatisch und saftig, intensiv duftende Schale.</dd>
+            <dt>Farbe</dt><dd>Kräftig gelb, teils noch leicht grünlich.</dd>
+            <dt>Kerne</dt><dd>Wenige.</dd>
+            <dt>Saison</dt><dd>Oktober bis Januar, die erste Ernte des Jahres.</dd>
+            <dt>Lagerung</dt><dd>Kühl und luftig, nicht in Plastik. Mehrere Wochen haltbar.</dd>
+            </dl>
+          </details>
+        </div>
+      </article>
+      <article class="sorte">
+        <img src="bilder/cedro.jpg" alt="Cedro">
+        <div class="sorte-text">
+          <h3>Cedro</h3>
+          <div class="sorte-saison">Nov – Feb</div>
+          <p>Kaum Saft, dafür aromatische Schale. Für Zesten, Likör und Kandiertes.</p>
+          <details class="sorte-mehr">
+            <summary>Mehr erfahren</summary>
+            <dl>
+            <dt>Geschmack</dt><dd>Kaum Saft, dafür sehr aromatische Schale.</dd>
+            <dt>Farbe</dt><dd>Gelb, darunter eine dicke weiße Schicht.</dd>
+            <dt>Kerne</dt><dd>Einige, stören bei der Verwendung nicht.</dd>
+            <dt>Saison</dt><dd>November bis Februar.</dd>
+            <dt>Lagerung</dt><dd>Kühl und trocken, mehrere Wochen haltbar.</dd>
+            </dl>
+          </details>
+        </div>
+      </article>
+      <article class="sorte">
+        <img src="bilder/grapefruit.jpg" alt="Grapefruit">
+        <div class="sorte-text">
+          <h3>Grapefruit</h3>
+          <div class="sorte-saison">Dez – Apr</div>
+          <p>Fruchtig mit feiner Bitternote, rosa Fruchtfleisch, milder als aus dem Supermarkt.</p>
+          <details class="sorte-mehr">
+            <summary>Mehr erfahren</summary>
+            <dl>
+            <dt>Geschmack</dt><dd>Fruchtig und saftig mit feiner Bitternote, milder als Supermarktware.</dd>
+            <dt>Farbe</dt><dd>Gelb mit rötlichem Hauch, Fruchtfleisch rosa.</dd>
+            <dt>Kerne</dt><dd>Wenige.</dd>
+            <dt>Saison</dt><dd>Dezember bis April.</dd>
+            <dt>Lagerung</dt><dd>Kühl und luftig, bis zu 3 Wochen haltbar.</dd>
+            </dl>
+          </details>
+        </div>
+      </article>
+      <article class="sorte">
+        <img src="bilder/olivenoel.jpg" alt="Natives Olivenöl extra">
+        <div class="sorte-text">
+          <h3>Natives Olivenöl extra</h3>
+          <div class="sorte-saison">Ernte Okt – Nov</div>
+          <p>Kalt gepresst in Francofonte, fruchtig-grün mit leichter Schärfe im Abgang.</p>
+          <details class="sorte-mehr">
+            <summary>Mehr erfahren</summary>
+            <dl>
+            <dt>Geschmack</dt><dd>Fruchtig und grün, mit leichter Schärfe im Abgang.</dd>
+            <dt>Farbe</dt><dd>Kräftig grüngelb.</dd>
+            <dt>Herkunft</dt><dd>Francofonte, Sizilien. Nativ extra, kalt gepresst.</dd>
+            <dt>Ernte</dt><dd>Oktober und November.</dd>
+            <dt>Lagerung</dt><dd>Dunkel und kühl, innerhalb eines Jahres aufbrauchen.</dd>
+            </dl>
+          </details>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="spalte">
+    <div class="kopfzeile">
+      <span class="marke">Wer wir sind</span>
+      <h2>Ein Familienbetrieb, kein Händler</h2>
+    </div>
+    <div class="geschichte">
+      <div class="geschichte-text">
+        <p>
+          Angefangen hat das alles mein Opa. Er hie&szlig; Giuseppe La Rocca,
+          genau wie ich, und hat die ersten Kisten sizilianischer Orangen nach
+          Hessen geholt &mdash; f&uuml;r Familie, Nachbarn und Bekannte, die
+          wussten, wie Orangen eigentlich schmecken sollen. 2019 ist er
+          gestorben. Seitdem machen mein Vater und ich weiter, in zweiter
+          Generation.
+        </p>
+        <p>
+          Unsere Fr&uuml;chte kommen aus Francofonte, einer Kleinstadt
+          s&uuml;dwestlich des &Auml;tna. Es ist seit Jahren derselbe
+          Lieferant, und das bleibt so. Wir wissen, wie dort geerntet wird,
+          und wir wissen, was bei uns ankommt.
+        </p>
+        <p>
+          Deshalb gibt es bei uns keinen Laden und keine Auslage. Wir holen nur,
+          was vorher bestellt wurde. Das hei&szlig;t: frisch geerntete Ware,
+          nichts liegt wochenlang im Regal &mdash; und am Ende bleibt nichts
+          &uuml;brig, das keiner mehr wollte.
+        </p>
+      </div>
+      <div>
+        <div class="geschichte-bild">
+          <img src="bilder/sortiment.jpg" alt="Zitrusfrüchte aus Sizilien">
+        </div>
+        <span class="bildhinweis" style="display:block; margin-top:8px">Symbolbild, KI-generiert</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="abholen">
+  <section class="spalte">
+    <div class="kopfzeile">
+      <span class="marke" id="abholung">Abholung</span>
+      <h2>Wo ihr uns findet</h2>
+    </div>
+    <div class="abhol-raster">
+      <div class="abhol-feld">
+        <h3>Adresse</h3>
+        <p>
+          TUNC Trans<br>
+          Auf das Loh 12<br>
+          63512 Hainburg
+        </p>
+      </div>
+      <div class="abhol-feld">
+        <h3>Termine</h3>
+        <p>
+          Zwei bis drei Lieferungen pro Saison.<br>
+          Bestellschluss und Abholtag stehen im Formular.
+        </p>
+      </div>
+      <div class="abhol-feld">
+        <h3>Fragen</h3>
+        <p>
+          <a href="tel:+4917663424071">0176 63424071</a><br>
+          auch per WhatsApp<br>
+          <a href="mailto:larocca.sicilia@gmail.com">larocca.sicilia@gmail.com</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="schluss">
+  <div class="spalte">
+    <h2>Bereit für die nächste Lieferung?</h2>
+    <p>Bestellen dauert zwei Minuten. Du bezahlst erst, wenn du die Kisten im Auto hast.</p>
+    <a class="knopf knopf-gross" href="bestellen/">Jetzt vorbestellen</a>
+  </div>
+</section>
+
+<footer>
+  <div class="spalte">
+    <span class="fuss-marke"><img src="bilder/logo.png" alt="La Rocca"></span>
+  </div>
+  <div class="spalte fuss">
+    <span>© La Rocca · Zitrusfrüchte aus Sizilien</span>
+    <div class="fuss-links">
+      <a href="rechtliches.html">Impressum &amp; Datenschutz</a>
+      <a class="insta" href="https://www.instagram.com/larocca.sicilia" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+          <circle cx="12" cy="12" r="4.2"></circle>
+          <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"></circle>
+        </svg>
+        <span>@larocca.sicilia</span>
+      </a>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
