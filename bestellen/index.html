@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Bestellen – La Rocca</title>
+  <meta name="description" content="Zitrusfrüchte und Olivenöl aus Sizilien vorbestellen.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="La Rocca">
+  <meta property="og:url" content="https://larocca-sicilia.de/bestellen/">
+  <meta property="og:title" content="Zitrusfrüchte aus Sizilien vorbestellen">
+  <meta property="og:description" content="Sonnengereift am Ätna, frisch geerntet, auf Vorbestellung nach Hainburg.">
+  <meta property="og:image" content="https://larocca-sicilia.de/bilder/etna.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../bilder/logo.png">
+  <link rel="apple-touch-icon" href="https://i.postimg.cc/WpFd5zcs/app-icon.png">
+  <meta name="apple-mobile-web-app-title" content="La Rocca">
+
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; background: #FDF2E9; overflow: hidden; }
+    #laden {
+      position: fixed; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-weight: bold; color: #D35400; background: #FDF2E9; z-index: 1;
+    }
+    #formular {
+      position: fixed; inset: 0;
+      width: 100%; height: 100%;
+      border: 0; display: block; z-index: 2; background: #FDF2E9;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="laden">Einen Moment …</div>
+
+  <iframe id="formular" src="https://script.google.com/macros/s/AKfycbwqmzzx5abuDxQo4bh8SDc72g_uyU2PuiguBdLNrqLWCYlBJ-joYypsgjv00tu_-9lT/exec" title="Bestellformular" allow="clipboard-write"></iframe>
+
+  <script>
+    document.getElementById('formular').addEventListener('load', function () {
+      var l = document.getElementById('laden');
+      if (l) { l.style.display = 'none'; }
+    });
+  </script>
+
+</body>
+</html>
