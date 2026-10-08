@@ -216,22 +216,33 @@ img { max-width: 100%; }
 
 /* ---------------- Hero ---------------- */
 
-/* Das Foto ist 3:2 und wird nie beschnitten: Handy, Tablet und PC zeigen
-   dieselbe Szene. Auf großen Bildschirmen wird es nur so groß, dass es
-   samt Kopfleiste auf den Bildschirm passt. */
-.hero {
-  margin: 22px auto 0;
-  padding-inline: 20px;
-  max-width: calc(min(1340px, max(480px, (100vh - 200px) * 1.5)) + 40px);
+/* Titelbild über die volle Breite. Das Foto selbst (3:2) wird nie beschnitten
+   oder herangezoomt: Es steht komplett in der Mitte, links und rechts geht es
+   als unscharfe Verlängerung desselben Fotos weiter. Auf großen Bildschirmen
+   wird es nur so hoch, dass es samt Kopfleiste auf den Bildschirm passt. */
+.hero { margin: 0; }
+.hero-band {
+  position: relative;
+  overflow: hidden;
+  background: #7a8f4a;
+  border-bottom: 3px solid var(--rahmen);
+}
+.hero-band::before {
+  content: "";
+  position: absolute;
+  inset: -60px;
+  background: url("bilder/sortiment.jpg") center / cover no-repeat;
+  filter: blur(30px) saturate(1.05) brightness(.9);
 }
 .hero-bild {
+  position: relative;
   display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 3 / 2;
-  object-fit: cover;
-  border: 2px solid var(--rahmen);
-  border-radius: 16px;
+  max-width: min(1600px, max(480px, (100vh - 170px) * 1.5));
+  margin: 0 auto;
+  box-shadow: 0 0 48px rgba(0, 0, 0, .28);
 }
 .bildhinweis {
   font-size: 10.5px;
@@ -243,7 +254,6 @@ img { max-width: 100%; }
   padding-block: 7px 0;
   text-align: right;
 }
-figure.hero { margin-bottom: 0; }
 
 .hero-text {
   display: grid;
@@ -390,7 +400,7 @@ h2 {
 .kalender { display: grid; gap: 7px; }
 .kal-zeile {
   display: grid;
-  grid-template-columns: 215px minmax(0, 1fr);
+  grid-template-columns: 280px minmax(0, 1fr);
   align-items: center;
 }
 .kal-monate { display: grid; grid-template-columns: repeat(8, 1fr); }
@@ -655,10 +665,8 @@ footer a:hover { color: var(--akzent); }
   .kal-balken { font-size: 12px; }
   .kal-monate span { font-size: 12px; letter-spacing: 0.02em; }
 
-  /* Handy: Foto randlos über die volle Breite, wie bisher */
-  .hero { margin-top: 0; padding-inline: 0; }
-  .hero-bild { border: 0; border-bottom: 3px solid var(--rahmen); border-radius: 0; }
-  .hero-hinweis { padding-right: 20px; }
+  /* Handy: Foto füllt die Breite ganz aus */
+  .hero-bild { box-shadow: none; }
 }
 
 @media (max-width: 460px) {
@@ -703,8 +711,10 @@ footer a:hover { color: var(--akzent); }
 </header>
 
 <figure class="hero">
-  <img class="hero-bild" src="bilder/sortiment.jpg" width="1200" height="800" alt="Zitrusfrüchte vor Orangenbäumen, im Hintergrund der Ätna">
-  <figcaption class="bildhinweis hero-hinweis">Symbolbild, KI-generiert</figcaption>
+  <div class="hero-band">
+    <img class="hero-bild" src="bilder/sortiment.jpg" width="1200" height="800" alt="Zitrusfrüchte vor Orangenbäumen, im Hintergrund der Ätna">
+  </div>
+  <figcaption class="spalte bildhinweis hero-hinweis">Symbolbild, KI-generiert</figcaption>
 </figure>
 
 <div class="spalte hero-text">
@@ -765,7 +775,7 @@ footer a:hover { color: var(--akzent); }
       <li class="schritt">
         <div class="schritt-nr">04</div>
         <h3>Abholen und bezahlen</h3>
-        <p>In Hainburg tragen wir dir die Kisten ins Auto. Bezahlt wird erst dann, direkt vor Ort.</p>
+        <p>Am Abholtag holst du deine Bestellung in Hainburg ab. Bezahlt wird erst dann, direkt vor Ort.</p>
       </li>
     </ol>
   </div>
@@ -789,11 +799,11 @@ footer a:hover { color: var(--akzent); }
       </div>
 
       <div class="kal-zeile">
-        <div class="kal-name">Tarocco (Verzehr)</div>
+        <div class="kal-name">Tarocco-Blutorangen (Verzehr)</div>
         <div class="kal-spur"><div class="kal-balken tief" style="--von:3; --bis:8">Dez – Apr</div></div>
       </div>
       <div class="kal-zeile">
-        <div class="kal-name">Tarocco (Saft)</div>
+        <div class="kal-name">Tarocco-Blutorangen (Saft)</div>
         <div class="kal-spur"><div class="kal-balken tief" style="--von:3; --bis:8">Dez – Apr</div></div>
       </div>
       <div class="kal-zeile">
@@ -825,7 +835,7 @@ footer a:hover { color: var(--akzent); }
         <div class="kal-spur"><div class="kal-balken" style="--von:1; --bis:8">Okt – Apr</div></div>
       </div>
       <div class="kal-zeile">
-        <div class="kal-name">Olivenöl nativ extra</div>
+        <div class="kal-name">Natives Olivenöl extra</div>
         <div class="kal-spur"><div class="kal-balken oel" style="--von:1; --bis:4">Ernte Okt – Dez</div></div>
       </div>
     </div>
@@ -1142,7 +1152,7 @@ footer a:hover { color: var(--akzent); }
       </details>
       <details class="frage">
         <summary>Wo hole ich ab?</summary>
-        <p>Bei TUNC Trans, Auf das Loh 12, 63512 Hainburg. Wir tragen dir die Kisten ins Auto.</p>
+        <p>Bei TUNC Trans, Auf das Loh 12, 63512 Hainburg.</p>
       </details>
       <details class="frage">
         <summary>Ich kann am Abholtag nicht. Was jetzt?</summary>
@@ -1181,7 +1191,7 @@ footer a:hover { color: var(--akzent); }
 <section class="schluss">
   <div class="spalte">
     <h2>Bereit für die nächste Lieferung?</h2>
-    <p>Bestellen dauert zwei Minuten. Du bezahlst erst, wenn du die Kisten im Auto hast.</p>
+    <p>Bestellen dauert zwei Minuten. Bezahlt wird erst bei der Abholung.</p>
     <a class="knopf knopf-gross" href="bestellen/">Jetzt vorbestellen</a>
   </div>
 </section>
