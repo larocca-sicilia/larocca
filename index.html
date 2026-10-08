@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>La Rocca – Zitrusfrüchte aus Sizilien</title>
-<meta name="description" content="Sonnengereifte Zitrusfrüchte und kaltgepresstes Olivenöl aus Sizilien. Auf Vorbestellung, zur Abholung in Hainburg.">
+<meta name="description" content="Sonnengereifte Zitrusfrüchte und natives Olivenöl extra aus Sizilien. Auf Vorbestellung, zur Abholung in Hainburg.">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="La Rocca">
@@ -13,8 +13,8 @@
 <meta property="og:title" content="Zitrusfrüchte aus Sizilien">
 <meta property="og:description" content="Sonnengereift am Ätna, frisch geerntet, auf Vorbestellung nach Hainburg.">
 <meta property="og:image" content="https://larocca-sicilia.de/bilder/sortiment.jpg">
-<meta property="og:image:width" content="1400">
-<meta property="og:image:height" content="933">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="800">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="https://larocca-sicilia.de/bilder/favicon.png">
@@ -216,13 +216,22 @@ img { max-width: 100%; }
 
 /* ---------------- Hero ---------------- */
 
+/* Das Foto ist 3:2 und wird nie beschnitten: Handy, Tablet und PC zeigen
+   dieselbe Szene. Auf großen Bildschirmen wird es nur so groß, dass es
+   samt Kopfleiste auf den Bildschirm passt. */
+.hero {
+  margin: 22px auto 0;
+  padding-inline: 20px;
+  max-width: calc(min(1340px, max(480px, (100vh - 200px) * 1.5)) + 40px);
+}
 .hero-bild {
   display: block;
   width: 100%;
-  height: clamp(340px, 56vh, 620px);
+  height: auto;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
-  object-position: 50% 42%;
-  border-bottom: 3px solid var(--rahmen);
+  border: 2px solid var(--rahmen);
+  border-radius: 16px;
 }
 .bildhinweis {
   font-size: 10.5px;
@@ -234,6 +243,7 @@ img { max-width: 100%; }
   padding-block: 7px 0;
   text-align: right;
 }
+figure.hero { margin-bottom: 0; }
 
 .hero-text {
   display: grid;
@@ -288,8 +298,8 @@ img { max-width: 100%; }
     to   { opacity: 1; transform: none; }
   }
   @keyframes zoom {
-    from { opacity: 0; transform: scale(1.04); }
-    to   { opacity: 1; transform: none; }
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
 }
 
@@ -355,7 +365,7 @@ h2 {
 
 .schritte {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 20px;
   list-style: none;
   margin: 0;
@@ -524,6 +534,51 @@ h2 {
   border-radius: 4px;
 }
 
+/* ---------------- Fragen ---------------- */
+
+.fragen { max-width: 820px; display: grid; gap: 12px; }
+.fragen-gruppe {
+  font-family: var(--daten);
+  font-size: 13.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tief);
+  margin: 22px 0 0;
+}
+.fragen-gruppe:first-child { margin-top: 0; }
+.frage {
+  background: var(--flaeche);
+  border: 2px solid var(--rahmen);
+  border-radius: 12px;
+}
+.frage summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 15px 18px;
+  font-size: 18.5px;
+  font-weight: 700;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.frage summary::-webkit-details-marker { display: none; }
+.frage summary::after {
+  content: "";
+  flex: none;
+  width: 10px; height: 10px;
+  border-right: 2.5px solid var(--akzent);
+  border-bottom: 2.5px solid var(--akzent);
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform .18s ease;
+}
+.frage[open] summary::after { transform: rotate(-135deg) translate(-3px, -3px); }
+.frage summary:focus-visible { outline: 3px solid var(--akzent); outline-offset: 3px; border-radius: 10px; }
+.frage p { padding: 0 18px 17px; font-size: 17.5px; color: var(--gedaempft); line-height: 1.6; }
+.frage p + p { margin-top: -6px; }
+.frage a { color: var(--text); text-decoration-color: var(--rahmen); text-underline-offset: 3px; }
+
 /* ---------------- Abholung ---------------- */
 
 .abholen {
@@ -577,7 +632,6 @@ footer a:hover { color: var(--akzent); }
 @media (max-width: 860px) {
   .geschichte { grid-template-columns: 1fr; gap: 26px; }
   .geschichte-bild { order: -1; }
-  .schritte { grid-template-columns: 1fr; gap: 24px; }
   .abhol-raster { grid-template-columns: 1fr; gap: 26px; }
   section { padding-block: 46px; }
   .hero-text { grid-template-columns: 1fr; gap: 24px; padding-block: 34px 44px; }
@@ -601,9 +655,10 @@ footer a:hover { color: var(--akzent); }
   .kal-balken { font-size: 12px; }
   .kal-monate span { font-size: 12px; letter-spacing: 0.02em; }
 
-  /* Das Foto ist 3:2. In diesem Verhältnis wird nichts weggeschnitten —
-     auf dem Handy ist dieselbe Szene zu sehen wie auf dem Desktop. */
-  .hero-bild { height: auto; aspect-ratio: 3 / 2; }
+  /* Handy: Foto randlos über die volle Breite, wie bisher */
+  .hero { margin-top: 0; padding-inline: 0; }
+  .hero-bild { border: 0; border-bottom: 3px solid var(--rahmen); border-radius: 0; }
+  .hero-hinweis { padding-right: 20px; }
 }
 
 @media (max-width: 460px) {
@@ -622,8 +677,7 @@ footer a:hover { color: var(--akzent); }
 
 /* ---------------- Breit ---------------- */
 /* Grosse Monitore: nur die Inhaltsspalte darf mitwachsen, damit der Text
-   auf einem Ultrawide nicht als schmale Insel in der Mitte klebt.
-   Das Hero-Bild bleibt unangetastet. */
+   auf einem Ultrawide nicht als schmale Insel in der Mitte klebt. */
 @media (min-width: 1500px) {
   .spalte { max-width: 1340px; }
 }
@@ -642,13 +696,16 @@ footer a:hover { color: var(--akzent); }
       <a href="#saison">Saison</a>
       <a href="#sortiment">Sortiment</a>
       <a href="#abholung">Abholung</a>
+      <a href="#fragen">Fragen</a>
     </nav>
     <a class="knopf knopf-klein" href="bestellen/">Vorbestellen</a>
   </div>
 </header>
 
-<img class="hero-bild" src="bilder/sortiment.jpg" alt="Orange am Baum vor dem Ätna">
-<div class="spalte"><span class="bildhinweis hero-hinweis">Symbolbild, KI-generiert</span></div>
+<figure class="hero">
+  <img class="hero-bild" src="bilder/sortiment.jpg" width="1200" height="800" alt="Zitrusfrüchte vor Orangenbäumen, im Hintergrund der Ätna">
+  <figcaption class="bildhinweis hero-hinweis">Symbolbild, KI-generiert</figcaption>
+</figure>
 
 <div class="spalte hero-text">
   <div class="hero-links">
@@ -659,7 +716,7 @@ footer a:hover { color: var(--akzent); }
   <div class="hero-rechts">
     <p>Blutorangen brauchen den Temperatursturz zwischen Tag und Nacht an den Hängen des Vulkans. Wir holen sie von dort und bringen sie nach Hainburg.</p>
     <a class="knopf knopf-gross" href="bestellen/">Jetzt vorbestellen</a>
-    <p class="hero-notiz">Keine Mindestmenge. Bezahlt wird bei der Abholung.</p>
+    <p class="hero-notiz">Keine Mindestmenge. Bezahlt wird erst bei der Abholung – bar oder mit PayPal.</p>
   </div>
 </div>
 
@@ -687,23 +744,28 @@ footer a:hover { color: var(--akzent); }
     <div class="kopfzeile">
       <span class="marke" id="ablauf">Ablauf</span>
       <h2>Erst bestellt, dann geerntet</h2>
-      <p>Wir halten kein Lager. Was ihr bestellt, wird kurz vor der Fahrt gepflückt — deshalb gibt es nur Vorbestellung und feste Abholtage.</p>
+      <p>Wir haben kein Lager und keinen Laden. Was ihr bestellt, wird kurz vor der Fahrt geerntet – deshalb gibt es nur Vorbestellung.</p>
     </div>
     <ol class="schritte">
       <li class="schritt">
         <div class="schritt-nr">01</div>
-        <h3>Online bestellen</h3>
-        <p>Sorten und Mengen auswählen, abschicken. Die Bestätigung kommt sofort per E-Mail.</p>
+        <h3>Bestellen</h3>
+        <p>Sorten und Mengen im Formular auswählen und abschicken. Die Bestätigung kommt sofort per E-Mail. Bis zum Bestellschluss kannst du noch ändern.</p>
       </li>
       <li class="schritt">
         <div class="schritt-nr">02</div>
-        <h3>Wir fahren los</h3>
-        <p>Nach Bestellschluss geht die Sammelbestellung nach Francofonte. Geerntet wird am Tag davor.</p>
+        <h3>Ernte und Fahrt</h3>
+        <p>Nach Bestellschluss geht die Sammelbestellung an unseren Lieferanten in Francofonte. Dort wird geerntet, dann kommt alles per Lkw zu uns.</p>
       </li>
       <li class="schritt">
         <div class="schritt-nr">03</div>
-        <h3>Abholen</h3>
-        <p>Am Abholtag kommt ihr vorbei, wir tragen die Kisten ins Auto, bezahlt wird vor Ort.</p>
+        <h3>Abholtag erfahren</h3>
+        <p>Sobald die Ware unterwegs ist, sagen wir dir den genauen Abholtag in unserer WhatsApp-Community. Kein WhatsApp? Ruf uns kurz an.</p>
+      </li>
+      <li class="schritt">
+        <div class="schritt-nr">04</div>
+        <h3>Abholen und bezahlen</h3>
+        <p>In Hainburg tragen wir dir die Kisten ins Auto. Bezahlt wird erst dann – bar oder mit PayPal.</p>
       </li>
     </ol>
   </div>
@@ -714,7 +776,7 @@ footer a:hover { color: var(--akzent); }
     <div class="kopfzeile">
       <span class="marke" id="saison">Saison</span>
       <h2>Wann es was gibt</h2>
-      <p>Zitrusfrüchte haben enge Fenster. Die Tarocco ist im Februar am besten, die Zitronen gibt es schon im Oktober, und die späte Navel kommt erst, wenn die frühe längst vorbei ist.</p>
+      <p>Zitrusfrüchte haben enge Fenster. Die Tarocco ist von Januar bis März am besten, Zitronen und Grapefruit gibt es schon ab Oktober, und die späte Navel kommt erst, wenn die frühe vorbei ist.</p>
     </div>
 
     <div class="kalender">
@@ -727,48 +789,48 @@ footer a:hover { color: var(--akzent); }
       </div>
 
       <div class="kal-zeile">
-        <div class="kal-name">Tarocco-Blutorangen</div>
+        <div class="kal-name">Tarocco (Verzehr)</div>
         <div class="kal-spur"><div class="kal-balken tief" style="--von:3; --bis:8">Dez – Apr</div></div>
       </div>
       <div class="kal-zeile">
-        <div class="kal-name">Tarocco-Saftorangen</div>
+        <div class="kal-name">Tarocco (Saft)</div>
         <div class="kal-spur"><div class="kal-balken tief" style="--von:3; --bis:8">Dez – Apr</div></div>
       </div>
       <div class="kal-zeile">
         <div class="kal-name">Navel (Navelina)</div>
-        <div class="kal-spur"><div class="kal-balken" style="--von:2; --bis:5">Nov – Jan</div></div>
-      </div>
-      <div class="kal-zeile">
-        <div class="kal-name">Navel (Lane-Late)</div>
-        <div class="kal-spur"><div class="kal-balken" style="--von:6; --bis:9">Mär – Mai</div></div>
-      </div>
-      <div class="kal-zeile">
-        <div class="kal-name">Vanille-Orangen</div>
-        <div class="kal-spur"><div class="kal-balken" style="--von:3; --bis:8">Dez – Apr</div></div>
-      </div>
-      <div class="kal-zeile">
-        <div class="kal-name">Clementinen</div>
-        <div class="kal-spur"><div class="kal-balken" style="--von:3; --bis:5">Dez – Jan</div></div>
-      </div>
-      <div class="kal-zeile">
-        <div class="kal-name">Zitronen</div>
         <div class="kal-spur"><div class="kal-balken" style="--von:1; --bis:5">Okt – Jan</div></div>
       </div>
       <div class="kal-zeile">
-        <div class="kal-name">Cedro</div>
+        <div class="kal-name">Navel (Lane-Late)</div>
+        <div class="kal-spur"><div class="kal-balken" style="--von:5; --bis:9">Feb – Mai</div></div>
+      </div>
+      <div class="kal-zeile">
+        <div class="kal-name">Vanille-Orangen</div>
+        <div class="kal-spur"><div class="kal-balken" style="--von:2; --bis:7">Nov – Mär</div></div>
+      </div>
+      <div class="kal-zeile">
+        <div class="kal-name">Clementinen (Nova)</div>
+        <div class="kal-spur"><div class="kal-balken" style="--von:3; --bis:6">Dez – Feb</div></div>
+      </div>
+      <div class="kal-zeile">
+        <div class="kal-name">Zitronen (Primofiore)</div>
+        <div class="kal-spur"><div class="kal-balken" style="--von:1; --bis:7">Okt – Mär</div></div>
+      </div>
+      <div class="kal-zeile">
+        <div class="kal-name">Cedro-Zitronen</div>
         <div class="kal-spur"><div class="kal-balken" style="--von:2; --bis:6">Nov – Feb</div></div>
       </div>
       <div class="kal-zeile">
-        <div class="kal-name">Grapefruit</div>
-        <div class="kal-spur"><div class="kal-balken" style="--von:3; --bis:8">Dez – Apr</div></div>
+        <div class="kal-name">Grapefruit (pink)</div>
+        <div class="kal-spur"><div class="kal-balken" style="--von:1; --bis:8">Okt – Apr</div></div>
       </div>
       <div class="kal-zeile">
-        <div class="kal-name">Natives Olivenöl extra</div>
-        <div class="kal-spur"><div class="kal-balken oel" style="--von:1; --bis:3">Okt – Nov</div></div>
+        <div class="kal-name">Olivenöl nativ extra</div>
+        <div class="kal-spur"><div class="kal-balken oel" style="--von:1; --bis:4">Ernte Okt – Dez</div></div>
       </div>
     </div>
 
-    <p class="kalender-notiz">Richtwerte aus Sizilien. Welche Sorten bei der nächsten Lieferung tatsächlich dabei sind, steht im Bestellformular.</p>
+    <p class="kalender-notiz">Ungefähre Zeiten – wann genau geerntet wird, hängt vom Wetter in Sizilien ab. Welche Sorten bei der nächsten Lieferung dabei sind, steht im Bestellformular.</p>
   </div>
 </section>
 
@@ -782,181 +844,185 @@ footer a:hover { color: var(--akzent); }
 
     <div class="sorten">
       <article class="sorte">
-        <img src="bilder/tarocco.jpg" alt="Tarocco-Blutorangen">
+        <img src="bilder/tarocco.jpg" alt="Tarocco-Blutorangen (Verzehr)" loading="lazy">
         <div class="sorte-text">
-          <h3>Tarocco-Blutorangen</h3>
+          <h3>Tarocco-Blutorangen (Verzehr)</h3>
           <div class="sorte-saison">Dez – Apr</div>
-          <p>Süß mit feiner Säure, Note von roten Beeren. So gut wie kernlos.</p>
+          <p>Süß, aromatisch und saftig mit leichter Säure. Fruchtfleisch rot marmoriert.</p>
           <details class="sorte-mehr">
             <summary>Mehr erfahren</summary>
             <dl>
-            <dt>Geschmack</dt><dd>Süß und saftig mit feiner Säure, Note von roten Beeren.</dd>
-            <dt>Farbe</dt><dd>Goldorange bis tiefrot, je nach Nachtfrost am Ätna.</dd>
-            <dt>Kerne</dt><dd>So gut wie keine.</dd>
-            <dt>Saison</dt><dd>Dezember bis April, am besten Januar bis März.</dd>
-            <dt>Lagerung</dt><dd>Kühl und luftig, 1–2 Wochen haltbar.</dd>
+            <dt>Geschmack</dt><dd>Süß, aromatisch, saftig und leicht säuerlich.</dd>
+            <dt>Farbe</dt><dd>Orange bis rötlich, Fruchtfleisch orange bis kräftig rot marmoriert.</dd>
+            <dt>Kerne</dt><dd>Meist kernlos bis sehr kernarm.</dd>
+            <dt>Saison</dt><dd>Etwa Dezember bis April, Hauptsaison Januar bis März.</dd>
+            <dt>Lagerung</dt><dd>Kühl, trocken und luftig, regelmäßig kontrollieren. Etwa 2–3 Wochen haltbar.</dd>
             </dl>
           </details>
         </div>
       </article>
       <article class="sorte">
-        <img src="bilder/saftorangen.jpg" alt="Tarocco-Saftorangen">
+        <img src="bilder/saftorangen.jpg" alt="Tarocco-Blutorangen (Saft)" loading="lazy">
         <div class="sorte-text">
-          <h3>Tarocco-Saftorangen</h3>
+          <h3>Tarocco-Blutorangen (Saft)</h3>
           <div class="sorte-saison">Dez – Apr</div>
-          <p>Dieselbe Sorte in kleinerem Kaliber, kräftig und sehr saftig.</p>
+          <p>Dieselbe Sorte im kleineren Kaliber, sehr saftig.</p>
           <details class="sorte-mehr">
             <summary>Mehr erfahren</summary>
             <dl>
-            <dt>Geschmack</dt><dd>Kräftig und süß, sehr saftig.</dd>
-            <dt>Farbe</dt><dd>Rot wie die Tarocco zum Verzehr, nur kleinere Früchte.</dd>
-            <dt>Kerne</dt><dd>So gut wie keine.</dd>
-            <dt>Saison</dt><dd>Dezember bis April.</dd>
-            <dt>Lagerung</dt><dd>Kühl und luftig, 1–2 Wochen haltbar.</dd>
+            <dt>Geschmack</dt><dd>Süß, aromatisch, leicht säuerlich, sehr saftig.</dd>
+            <dt>Farbe</dt><dd>Orange bis rötlich, Fruchtfleisch orange bis kräftig rot marmoriert.</dd>
+            <dt>Größe</dt><dd>Kleineres Kaliber.</dd>
+            <dt>Kerne</dt><dd>Meist kernlos bis kernarm.</dd>
+            <dt>Saison</dt><dd>Etwa Dezember bis April, Hauptsaison Januar bis März.</dd>
+            <dt>Lagerung</dt><dd>Kühl, trocken und luftig. Etwa 2–3 Wochen haltbar.</dd>
             </dl>
           </details>
         </div>
       </article>
       <article class="sorte">
-        <img src="bilder/navel.jpg" alt="Navel (Navelina)">
+        <img src="bilder/navel.jpg" alt="Navel (Navelina)" loading="lazy">
         <div class="sorte-text">
           <h3>Navel (Navelina)</h3>
-          <div class="sorte-saison">Nov – Jan</div>
-          <p>Mild und süß, kernlos, leicht zu schälen. Die frühe Navel.</p>
+          <div class="sorte-saison">Okt – Jan</div>
+          <p>Süß und mild, wenig Säure, nahezu kernlos. Die frühe Navel.</p>
           <details class="sorte-mehr">
             <summary>Mehr erfahren</summary>
             <dl>
-            <dt>Geschmack</dt><dd>Süß und mild, wenig Säure, sehr saftig.</dd>
-            <dt>Farbe</dt><dd>Kräftig orange, Fruchtfleisch hell.</dd>
-            <dt>Kerne</dt><dd>Keine, lässt sich leicht schälen.</dd>
-            <dt>Saison</dt><dd>November bis Januar, die frühe Navel.</dd>
-            <dt>Lagerung</dt><dd>Kühl und luftig, rund 2 Wochen haltbar.</dd>
+            <dt>Geschmack</dt><dd>Süß, mild, saftig, geringe Säure.</dd>
+            <dt>Farbe</dt><dd>Orangefarbene Schale und orangefarbenes Fruchtfleisch.</dd>
+            <dt>Kerne</dt><dd>Nahezu kernlos.</dd>
+            <dt>Saison</dt><dd>Ungefähr Oktober/November bis Januar, die frühe Navel.</dd>
+            <dt>Lagerung</dt><dd>Kühl, trocken und luftig. Etwa 2–3 Wochen haltbar.</dd>
             </dl>
           </details>
         </div>
       </article>
       <article class="sorte">
-        <img src="bilder/navel.jpg" alt="Navel (Lane-Late)">
+        <img src="bilder/navel.jpg" alt="Navel (Lane-Late)" loading="lazy">
         <div class="sorte-text">
           <h3>Navel (Lane-Late)</h3>
-          <div class="sorte-saison">Mär – Mai</div>
-          <p>Etwas kräftiger, dünnere Schale. Kommt, wenn die anderen durch sind.</p>
+          <div class="sorte-saison">Feb – Mai</div>
+          <p>Süß und aromatisch mit milder Säure. Die späte Navel.</p>
           <details class="sorte-mehr">
             <summary>Mehr erfahren</summary>
             <dl>
-            <dt>Geschmack</dt><dd>Süß und ausgewogen, etwas kräftiger als die Navelina.</dd>
-            <dt>Farbe</dt><dd>Tieforange, dünnere Schale.</dd>
-            <dt>Kerne</dt><dd>Keine, lässt sich leicht schälen.</dd>
-            <dt>Saison</dt><dd>März bis Mai, die späte Navel.</dd>
-            <dt>Lagerung</dt><dd>Kühl und luftig, rund 2 Wochen haltbar.</dd>
+            <dt>Geschmack</dt><dd>Süß, aromatisch, saftig und mild-säuerlich.</dd>
+            <dt>Farbe</dt><dd>Kräftig orange, Fruchtfleisch orange.</dd>
+            <dt>Kerne</dt><dd>Meist kernlos bis kernarm.</dd>
+            <dt>Saison</dt><dd>Etwa Februar bis Mai.</dd>
+            <dt>Lagerung</dt><dd>Kühl, trocken und luftig. Etwa 2–3 Wochen haltbar.</dd>
             </dl>
           </details>
         </div>
       </article>
       <article class="sorte">
-        <img src="bilder/vanille.jpg" alt="Vanilleorangen">
+        <img src="bilder/vanille.jpg" alt="Vanille-Orangen" loading="lazy">
         <div class="sorte-text">
-          <h3>Vanilleorangen</h3>
-          <div class="sorte-saison">Dez – Apr</div>
-          <p>Fast ohne Säure, sehr mild, mit einer Note von Vanille.</p>
+          <h3>Vanille-Orangen</h3>
+          <div class="sorte-saison">Nov – Mär</div>
+          <p>Sehr süß und mild, nahezu säurefrei.</p>
           <details class="sorte-mehr">
             <summary>Mehr erfahren</summary>
             <dl>
-            <dt>Geschmack</dt><dd>Sehr mild, fast ohne Säure, Note von Vanille.</dd>
-            <dt>Farbe</dt><dd>Hellorange, Fruchtfleisch blass.</dd>
-            <dt>Kerne</dt><dd>Keine.</dd>
-            <dt>Saison</dt><dd>Dezember bis April.</dd>
-            <dt>Lagerung</dt><dd>Kühl und luftig, 1–2 Wochen haltbar.</dd>
+            <dt>Geschmack</dt><dd>Sehr süß, mild und aromatisch, nahezu säurefrei.</dd>
+            <dt>Farbe</dt><dd>Schale orange, Fruchtfleisch hellorange.</dd>
+            <dt>Kerne</dt><dd>Meist kernlos bis kernarm.</dd>
+            <dt>Saison</dt><dd>Etwa November bis März.</dd>
+            <dt>Lagerung</dt><dd>Kühl, trocken und luftig. Etwa 2–3 Wochen haltbar.</dd>
             </dl>
           </details>
         </div>
       </article>
       <article class="sorte">
-        <img src="bilder/clementinen.jpg" alt="Clementinen">
+        <img src="bilder/clementinen.jpg" alt="Clementinen (Nova)" loading="lazy">
         <div class="sorte-text">
-          <h3>Clementinen</h3>
-          <div class="sorte-saison">Dez – Jan</div>
-          <p>Süß, aromatisch, sehr saftig. Das kürzeste Fenster von allen.</p>
+          <h3>Clementinen (Nova)</h3>
+          <div class="sorte-saison">Dez – Feb</div>
+          <p>Süß, aromatisch und sehr saftig mit angenehmer Säure.</p>
           <details class="sorte-mehr">
             <summary>Mehr erfahren</summary>
             <dl>
-            <dt>Geschmack</dt><dd>Süß, aromatisch und sehr saftig.</dd>
-            <dt>Farbe</dt><dd>Tieforange, Schale liegt fester an.</dd>
-            <dt>Kerne</dt><dd>Meist keine, je nach Bestäubung einzelne möglich.</dd>
-            <dt>Saison</dt><dd>Dezember bis Januar.</dd>
-            <dt>Lagerung</dt><dd>Kühl und luftig, am besten innerhalb einer Woche.</dd>
+            <dt>Geschmack</dt><dd>Süß, aromatisch, sehr saftig und angenehm leicht säuerlich.</dd>
+            <dt>Farbe</dt><dd>Schale intensiv orange, Fruchtfleisch kräftig orange.</dd>
+            <dt>Kerne</dt><dd>Meist kernlos bis kernarm, durch Fremdbestäubung können Kerne auftreten.</dd>
+            <dt>Saison</dt><dd>Etwa Dezember bis Januar/Februar.</dd>
+            <dt>Lagerung</dt><dd>Kühl, trocken und luftig. Etwa 2 Wochen haltbar.</dd>
             </dl>
           </details>
         </div>
       </article>
       <article class="sorte">
-        <img src="bilder/zitronen.jpg" alt="Zitronen">
+        <img src="bilder/zitronen.jpg" alt="Zitronen (Primofiore)" loading="lazy">
         <div class="sorte-text">
-          <h3>Zitronen</h3>
-          <div class="sorte-saison">Okt – Jan</div>
-          <p>Intensiv duftende Schale, saftig. Die erste Ernte des Jahres.</p>
+          <h3>Zitronen (Primofiore)</h3>
+          <div class="sorte-saison">Okt – Mär</div>
+          <p>Sehr saftig und angenehm sauer, mit intensiv duftender Schale.</p>
           <details class="sorte-mehr">
             <summary>Mehr erfahren</summary>
             <dl>
-            <dt>Geschmack</dt><dd>Aromatisch und saftig, intensiv duftende Schale.</dd>
-            <dt>Farbe</dt><dd>Kräftig gelb, teils noch leicht grünlich.</dd>
-            <dt>Kerne</dt><dd>Wenige.</dd>
-            <dt>Saison</dt><dd>Oktober bis Januar, die erste Ernte des Jahres.</dd>
-            <dt>Lagerung</dt><dd>Kühl und luftig, nicht in Plastik. Mehrere Wochen haltbar.</dd>
+            <dt>Geschmack</dt><dd>Intensiv aromatisch, frisch und angenehm säuerlich, sehr saftig, intensiv duftende Schale.</dd>
+            <dt>Farbe</dt><dd>Schale hellgrün bis kräftig gelb, je nach Reifezeit. Fruchtfleisch hellgelb bis zitronengelb.</dd>
+            <dt>Kerne</dt><dd>Meist kernlos bis kernarm.</dd>
+            <dt>Saison</dt><dd>Etwa Oktober bis März.</dd>
+            <dt>Lagerung</dt><dd>Kühl, trocken und luftig. Etwa 3–4 Wochen haltbar.</dd>
             </dl>
           </details>
         </div>
       </article>
       <article class="sorte">
-        <img src="bilder/cedro.jpg" alt="Cedro">
+        <img src="bilder/cedro.jpg" alt="Cedro-Zitronen" loading="lazy">
         <div class="sorte-text">
-          <h3>Cedro</h3>
+          <h3>Cedro-Zitronen</h3>
           <div class="sorte-saison">Nov – Feb</div>
-          <p>Kaum Saft, dafür aromatische Schale. Für Zesten, Likör und Kandiertes.</p>
+          <p>Frisch-zitronig, mit dicker, mild-süßlicher weißer Schale.</p>
           <details class="sorte-mehr">
             <summary>Mehr erfahren</summary>
             <dl>
-            <dt>Geschmack</dt><dd>Kaum Saft, dafür sehr aromatische Schale.</dd>
-            <dt>Farbe</dt><dd>Gelb, darunter eine dicke weiße Schicht.</dd>
-            <dt>Kerne</dt><dd>Einige, stören bei der Verwendung nicht.</dd>
-            <dt>Saison</dt><dd>November bis Februar.</dd>
-            <dt>Lagerung</dt><dd>Kühl und trocken, mehrere Wochen haltbar.</dd>
+            <dt>Geschmack</dt><dd>Intensiv aromatisch, frisch-zitronig, mild bis leicht säuerlich.</dd>
+            <dt>Schale</dt><dd>Die dicke weiße Schale ist mild und leicht süßlich.</dd>
+            <dt>Farbe</dt><dd>Zunächst grün bis hellgrün, bei Reife gelb, sehr dicke weiße Innenschale.</dd>
+            <dt>Kerne</dt><dd>Kernhaltig, je nach Sorte auch zahlreiche Kerne.</dd>
+            <dt>Saison</dt><dd>Etwa November bis Februar.</dd>
+            <dt>Lagerung</dt><dd>Kühl, trocken und luftig. Etwa 2 Wochen haltbar.</dd>
             </dl>
           </details>
         </div>
       </article>
       <article class="sorte">
-        <img src="bilder/grapefruit.jpg" alt="Grapefruit">
+        <img src="bilder/grapefruit.jpg" alt="Grapefruit (pink)" loading="lazy">
         <div class="sorte-text">
           <h3>Grapefruit (pink)</h3>
-          <div class="sorte-saison">Dez – Apr</div>
-          <p>Fruchtig mit feiner Bitternote, rosa Fruchtfleisch, milder als aus dem Supermarkt.</p>
+          <div class="sorte-saison">Okt – Apr</div>
+          <p>Saftig und süß-säuerlich mit feiner Bitternote, Fruchtfleisch rosa bis pink.</p>
           <details class="sorte-mehr">
             <summary>Mehr erfahren</summary>
             <dl>
-            <dt>Geschmack</dt><dd>Fruchtig und saftig mit feiner Bitternote, milder als Supermarktware.</dd>
-            <dt>Farbe</dt><dd>Gelb mit rötlichem Hauch, Fruchtfleisch rosa.</dd>
-            <dt>Kerne</dt><dd>Wenige.</dd>
-            <dt>Saison</dt><dd>Dezember bis April.</dd>
-            <dt>Lagerung</dt><dd>Kühl und luftig, bis zu 3 Wochen haltbar.</dd>
+            <dt>Geschmack</dt><dd>Saftig, frisch, süß-säuerlich mit einer feinen Bitternote.</dd>
+            <dt>Farbe</dt><dd>Schale gelb bis orange mit leicht rosafarbenen Nuancen, Fruchtfleisch rosa bis kräftig pink.</dd>
+            <dt>Kerne</dt><dd>Meist kernlos bis kernarm.</dd>
+            <dt>Saison</dt><dd>Etwa Oktober bis April.</dd>
+            <dt>Lagerung</dt><dd>Kühl, trocken und luftig. Etwa 3–4 Wochen haltbar.</dd>
             </dl>
           </details>
         </div>
       </article>
       <article class="sorte">
-        <img src="bilder/olivenoel.jpg" alt="Natives Olivenöl extra">
+        <img src="bilder/olivenoel.jpg" alt="Natives Olivenöl extra" loading="lazy">
         <div class="sorte-text">
           <h3>Natives Olivenöl extra</h3>
-          <div class="sorte-saison">Ernte Okt – Nov</div>
-          <p>Kalt gepresst in Francofonte, fruchtig-grün mit leichter Schärfe im Abgang.</p>
+          <div class="sorte-saison">Ernte Okt – Dez</div>
+          <p>Intensiv fruchtig mit leicht herben und pfeffrigen Noten. Ungefiltert und naturtrüb.</p>
           <details class="sorte-mehr">
             <summary>Mehr erfahren</summary>
             <dl>
-            <dt>Geschmack</dt><dd>Fruchtig und grün, mit leichter Schärfe im Abgang.</dd>
-            <dt>Farbe</dt><dd>Kräftig grüngelb.</dd>
-            <dt>Herkunft</dt><dd>Francofonte, Sizilien. Nativ extra, kalt gepresst.</dd>
-            <dt>Ernte</dt><dd>Oktober und November.</dd>
-            <dt>Lagerung</dt><dd>Dunkel und kühl, innerhalb eines Jahres aufbrauchen.</dd>
+            <dt>Geschmack</dt><dd>Intensiv fruchtig, frisch und aromatisch, mit leicht herben und pfeffrigen Noten.</dd>
+            <dt>Farbe</dt><dd>Grün bis goldgrün, naturtrüb.</dd>
+            <dt>Herkunft</dt><dd>Francofonte, Sizilien.</dd>
+            <dt>Herstellung</dt><dd>Ungefiltert, kalt extrahiert, nativ extra.</dd>
+            <dt>Ernte</dt><dd>Überwiegend Oktober bis Dezember.</dd>
+            <dt>Lagerung</dt><dd>Kühl, dunkel und gut verschlossen, vor Licht und Wärme schützen.</dd>
+            <dt>Haltbarkeit</dt><dd>Etwa 18–24 Monate.</dd>
             </dl>
           </details>
         </div>
@@ -969,7 +1035,7 @@ footer a:hover { color: var(--akzent); }
   <div class="spalte">
     <div class="kopfzeile">
       <span class="marke">Wer wir sind</span>
-      <h2>Ein Familienbetrieb, kein Händler</h2>
+      <h2>Ein Familienbetrieb in zweiter Generation</h2>
     </div>
     <div class="geschichte">
       <div class="geschichte-text">
@@ -1023,7 +1089,7 @@ footer a:hover { color: var(--akzent); }
         <h3>Termine</h3>
         <p>
           Zwei bis drei Lieferungen pro Saison.<br>
-          Bestellschluss und Abholtag stehen im Formular.
+          Den Bestellschluss findest du im Formular, den genauen Abholtag sagen wir dir rechtzeitig.
         </p>
       </div>
       <div class="abhol-feld">
@@ -1037,6 +1103,80 @@ footer a:hover { color: var(--akzent); }
     </div>
   </section>
 </div>
+
+<section>
+  <div class="spalte">
+    <div class="kopfzeile">
+      <span class="marke" id="fragen">Fragen</span>
+      <h2>Fragen und Antworten</h2>
+      <p>Das Wichtigste kurz erklärt. Deine Frage ist nicht dabei? Ruf uns an, schreib per WhatsApp oder an <a href="mailto:info@larocca-sicilia.de" style="color:inherit">info@larocca-sicilia.de</a>.</p>
+    </div>
+    <div class="fragen">
+      <h3 class="fragen-gruppe">Bestellen</h3>
+      <details class="frage">
+        <summary>Wie bestelle ich?</summary>
+        <p>Über unser <a href="bestellen/">Bestellformular</a>: Sorten und Mengen auswählen, Name, Telefonnummer und E-Mail eintragen, abschicken. Ein Kundenkonto brauchst du nicht.</p>
+        <p>Die Bestätigung kommt sofort per E-Mail.</p>
+      </details>
+      <details class="frage">
+        <summary>Gibt es eine Mindestmenge?</summary>
+        <p>Nein. Viele Sorten gibt es auch kiloweise, du musst also keine ganze Kiste nehmen.</p>
+      </details>
+      <details class="frage">
+        <summary>Die Bestätigungsmail ist nicht angekommen. Was nun?</summary>
+        <p>Schau bitte auch im Spam- oder Junk-Ordner nach. Ist sie dort auch nicht, ruf uns kurz an oder schreib uns – dann prüfen wir, ob deine Bestellung angekommen ist.</p>
+      </details>
+      <details class="frage">
+        <summary>Kann ich meine Bestellung ändern oder stornieren?</summary>
+        <p>Ja, bis zum Bestellschluss – kurz per Anruf, WhatsApp oder E-Mail.</p>
+        <p>Danach ist die Ware bei unserem Lieferanten fest bestellt. Wenn danach noch etwas dazwischenkommt, melde dich bitte trotzdem bei uns.</p>
+      </details>
+      <h3 class="fragen-gruppe">Abholung</h3>
+      <details class="frage">
+        <summary>Wann ist der Abholtag?</summary>
+        <p>Den Bestellschluss findest du im Bestellformular. Den genauen Abholtag sagen wir dir, sobald die Ware unterwegs ist – in unserer WhatsApp-Community. Kein WhatsApp? Ruf uns kurz an.</p>
+      </details>
+      <details class="frage">
+        <summary>Warum steht der Abholtag nicht schon vorher fest?</summary>
+        <p>Die Früchte kommen per Lkw direkt aus Sizilien. Ernte, Wetter und Fahrt können den Termin um ein paar Tage verschieben. Wir sagen Bescheid, sobald er sicher ist.</p>
+      </details>
+      <details class="frage">
+        <summary>Wo hole ich ab?</summary>
+        <p>Bei TUNC Trans, Auf das Loh 12, 63512 Hainburg. Wir tragen dir die Kisten ins Auto.</p>
+      </details>
+      <details class="frage">
+        <summary>Ich kann am Abholtag nicht. Was jetzt?</summary>
+        <p>Sag uns bitte vorher Bescheid, dann finden wir eine Lösung.</p>
+        <p>Du kannst auch jemanden schicken, der für dich abholt – sag uns einfach vorher den Namen.</p>
+      </details>
+      <h3 class="fragen-gruppe">Bezahlen</h3>
+      <details class="frage">
+        <summary>Wie bezahle ich?</summary>
+        <p>Bei der Abholung, bar oder mit PayPal. Vorher musst du nichts bezahlen.</p>
+      </details>
+      <details class="frage">
+        <summary>Bleibt der Preis so, wie im Formular?</summary>
+        <p>Ja. Es gilt der Preis aus dem Bestellformular. Bei Kisten ist das Gewicht ein Circa-Wert, weil Früchte unterschiedlich groß sind – am Preis ändert das nichts.</p>
+      </details>
+      <h3 class="fragen-gruppe">Früchte und Öl</h3>
+      <details class="frage">
+        <summary>Woher kommen die Früchte?</summary>
+        <p>Aus Francofonte, einer Kleinstadt südwestlich des Ätna auf Sizilien – seit Jahren vom selben Lieferanten.</p>
+      </details>
+      <details class="frage">
+        <summary>Wie lagere ich sie richtig?</summary>
+        <p>Kühl, trocken und luftig, und regelmäßig nachschauen. Orangen halten so etwa 2–3 Wochen, Clementinen und Cedro etwa 2 Wochen, Zitronen und Grapefruit etwa 3–4 Wochen.</p>
+        <p>Das Olivenöl kühl und dunkel lagern und gut verschließen, dann hält es etwa 18–24 Monate.</p>
+      </details>
+      <h3 class="fragen-gruppe">Deine Daten</h3>
+      <details class="frage">
+        <summary>Was passiert mit meinen Daten?</summary>
+        <p>Wir nutzen deine Angaben nur, um deine Bestellung abzuwickeln. Werbung per E-Mail bekommst du von uns nicht.</p>
+        <p>Alles Genaue steht in unserer <a href="rechtliches.html">Datenschutzerklärung</a>.</p>
+      </details>
+    </div>
+  </div>
+</section>
 
 <section class="schluss">
   <div class="spalte">
