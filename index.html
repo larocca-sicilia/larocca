@@ -538,7 +538,9 @@ h2 {
   border-radius: 16px;
   overflow: hidden;
   border: 2px solid var(--rahmen);
-  aspect-ratio: 3 / 2;
+  /* Hochformat, weil die Fotos hochkant sind. Bei 3/2 quer wuerde oben und
+     unten je ein Viertel abgeschnitten – da waeren Koepfe weg. */
+  aspect-ratio: 3 / 4;
 }
 .geschichte-bild img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -1136,8 +1138,8 @@ footer a:hover { color: var(--akzent); }
            zu ändern. Gutes Format: 3:2 liegend, etwa 1500 x 1000 Pixel. -->
       <div class="geschichte-bilder">
         <div class="geschichte-bild" id="wer-schau">
-          <img src="bilder/wer-wir-sind-1.jpg" width="1200" height="800"
-               alt="Familie La Rocca">
+          <img src="bilder/wer-wir-sind-1.jpg" width="1000" height="1333"
+               alt="Familie La Rocca in Sizilien" loading="lazy">
         </div>
         <div class="wer-punkte" id="wer-punkte" hidden></div>
       </div>
@@ -1379,7 +1381,16 @@ footer a:hover { color: var(--akzent); }
     if (document.hidden) clearInterval(uhr); else if (bilder.length > 1) starten();
   });
 
-  suchen(1);
+  /* Erst laden, wenn der Abschnitt in Sichtweite kommt. Die Fotos sind gut
+     ein Megabyte zusammen – wer nur bestellen will, soll das nicht herunterladen. */
+  if ('IntersectionObserver' in window) {
+    var beobachter = new IntersectionObserver(function (eintraege) {
+      if (eintraege[0].isIntersecting) { beobachter.disconnect(); suchen(1); }
+    }, { rootMargin: '300px' });
+    beobachter.observe(kasten);
+  } else {
+    suchen(1);
+  }
 })();
 </script>
 </body>
