@@ -1315,9 +1315,10 @@ footer a:hover { color: var(--akzent); }
 
 <script>
 /* Diashow bei "Wer wir sind".
-   Das Script sucht der Reihe nach nach bilder/wer-wir-sind-1.jpg, -2.jpg, -3.jpg
-   und hoert beim ersten auf, das es nicht gibt. Neue Bilder also einfach mit der
-   naechsten Nummer hochladen, hier muss nichts geaendert werden.
+   Das Script sucht der Reihe nach bilder/wer-wir-sind-1, -2, -3 und hoert beim
+   ersten auf, das es nicht gibt. Neue Bilder also einfach mit der naechsten
+   Nummer hochladen, hier muss nichts geaendert werden.
+   Die Endung ist egal: jpg, jpeg, png und webp werden alle gefunden.
    Gibt es nur ein Bild, bleibt es ein ganz normales Bild ohne Diashow. */
 (function () {
   var kasten = document.getElementById('wer-schau');
@@ -1326,16 +1327,18 @@ footer a:hover { color: var(--akzent); }
 
   var HOECHSTENS = 12;      // mehr wird nicht gesucht
   var PAUSE      = 4000;    // Millisekunden pro Bild
+  var ENDUNGEN   = ['jpg', 'jpeg', 'png', 'webp'];
   var bilder     = [];
   var aktuell    = 0;
   var uhr        = null;
 
-  function suchen(nr) {
+  function suchen(nr, e) {
     if (nr > HOECHSTENS) return aufbauen();
+    if (e >= ENDUNGEN.length) return aufbauen();   // diese Nummer gibt es nicht
     var probe = new Image();
-    probe.onload  = function () { bilder.push(probe.src); suchen(nr + 1); };
-    probe.onerror = aufbauen;
-    probe.src = 'bilder/wer-wir-sind-' + nr + '.jpg';
+    probe.onload  = function () { bilder.push(probe.src); suchen(nr + 1, 0); };
+    probe.onerror = function () { suchen(nr, e + 1); };   // naechste Endung probieren
+    probe.src = 'bilder/wer-wir-sind-' + nr + '.' + ENDUNGEN[e];
   }
 
   function aufbauen() {
@@ -1385,11 +1388,11 @@ footer a:hover { color: var(--akzent); }
      ein Megabyte zusammen – wer nur bestellen will, soll das nicht herunterladen. */
   if ('IntersectionObserver' in window) {
     var beobachter = new IntersectionObserver(function (eintraege) {
-      if (eintraege[0].isIntersecting) { beobachter.disconnect(); suchen(1); }
+      if (eintraege[0].isIntersecting) { beobachter.disconnect(); suchen(1, 0); }
     }, { rootMargin: '300px' });
     beobachter.observe(kasten);
   } else {
-    suchen(1);
+    suchen(1, 0);
   }
 })();
 </script>
