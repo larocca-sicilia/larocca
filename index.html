@@ -541,6 +541,35 @@ h2 {
   aspect-ratio: 3 / 2;
 }
 .geschichte-bild img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Diashow bei "Wer wir sind". Ohne JavaScript steht hier einfach das erste
+   Bild – die Folien und Punkte legt erst das Script an. */
+#wer-schau { position: relative; }
+.wer-folie {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity .9s ease;
+}
+.wer-folie.an { opacity: 1; }
+.wer-punkte { display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
+.wer-punkte button {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--linie);
+  cursor: pointer;
+  transition: background .25s ease;
+}
+.wer-punkte button.an { background: var(--rahmen); }
+@media (prefers-reduced-motion: reduce) {
+  .wer-folie { transition: none; }
+}
 .platzhalter {
   background: #FFF0A8;
   color: #4A3A00;
@@ -1101,19 +1130,16 @@ footer a:hover { color: var(--akzent); }
           &uuml;brig, das keiner mehr wollte.
         </p>
       </div>
-      <!-- Zwei eigene Fotos. Zum Austauschen einfach zwei Bilder mit genau
-           diesen Namen in den Ordner "bilder" hochladen, dann ersetzen sie
-           die Platzhalter und hier muss nichts geändert werden.
-           Gutes Format: 3:2 liegend, etwa 1500 x 1000 Pixel. -->
+      <!-- Diashow. Die Bilder heißen wer-wir-sind-1.jpg, -2.jpg, -3.jpg und so
+           weiter, fortlaufend ohne Lücke. Einfach in den Ordner "bilder"
+           hochladen – das Script unten findet sie von allein, hier ist nichts
+           zu ändern. Gutes Format: 3:2 liegend, etwa 1500 x 1000 Pixel. -->
       <div class="geschichte-bilder">
-        <div class="geschichte-bild">
+        <div class="geschichte-bild" id="wer-schau">
           <img src="bilder/wer-wir-sind-1.jpg" width="1200" height="800"
-               alt="Familie La Rocca" loading="lazy">
+               alt="Familie La Rocca">
         </div>
-        <div class="geschichte-bild">
-          <img src="bilder/wer-wir-sind-2.jpg" width="1200" height="800"
-               alt="Familie La Rocca" loading="lazy">
-        </div>
+        <div class="wer-punkte" id="wer-punkte" hidden></div>
       </div>
     </div>
   </div>
@@ -1284,5 +1310,77 @@ footer a:hover { color: var(--akzent); }
     </div>
   </div>
 </footer>
+
+<script>
+/* Diashow bei "Wer wir sind".
+   Das Script sucht der Reihe nach nach bilder/wer-wir-sind-1.jpg, -2.jpg, -3.jpg
+   und hoert beim ersten auf, das es nicht gibt. Neue Bilder also einfach mit der
+   naechsten Nummer hochladen, hier muss nichts geaendert werden.
+   Gibt es nur ein Bild, bleibt es ein ganz normales Bild ohne Diashow. */
+(function () {
+  var kasten = document.getElementById('wer-schau');
+  var punkte = document.getElementById('wer-punkte');
+  if (!kasten || !punkte) return;
+
+  var HOECHSTENS = 12;      // mehr wird nicht gesucht
+  var PAUSE      = 4000;    // Millisekunden pro Bild
+  var bilder     = [];
+  var aktuell    = 0;
+  var uhr        = null;
+
+  function suchen(nr) {
+    if (nr > HOECHSTENS) return aufbauen();
+    var probe = new Image();
+    probe.onload  = function () { bilder.push(probe.src); suchen(nr + 1); };
+    probe.onerror = aufbauen;
+    probe.src = 'bilder/wer-wir-sind-' + nr + '.jpg';
+  }
+
+  function aufbauen() {
+    if (bilder.length < 2) return;          // ein Bild braucht keine Diashow
+
+    kasten.innerHTML = '';
+    bilder.forEach(function (quelle, i) {
+      var bild = document.createElement('img');
+      bild.src = quelle;
+      bild.alt = 'Familie La Rocca';
+      bild.className = 'wer-folie' + (i === 0 ? ' an' : '');
+      kasten.appendChild(bild);
+
+      var knopf = document.createElement('button');
+      knopf.type = 'button';
+      knopf.className = i === 0 ? 'an' : '';
+      knopf.setAttribute('aria-label', 'Bild ' + (i + 1) + ' von ' + bilder.length);
+      knopf.onclick = function () { zeigen(i); starten(); };
+      punkte.appendChild(knopf);
+    });
+    punkte.hidden = false;
+    starten();
+  }
+
+  function zeigen(nr) {
+    aktuell = nr;
+    var folien = kasten.children, knoepfe = punkte.children;
+    for (var i = 0; i < folien.length; i++) {
+      folien[i].className = 'wer-folie' + (i === nr ? ' an' : '');
+      knoepfe[i].className = i === nr ? 'an' : '';
+    }
+  }
+
+  function starten() {
+    clearInterval(uhr);
+    // Wer im System Animationen abgeschaltet hat, bekommt keinen Automatikwechsel.
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    uhr = setInterval(function () { zeigen((aktuell + 1) % bilder.length); }, PAUSE);
+  }
+
+  // Im Hintergrund nicht weiterlaufen lassen, das spart Akku.
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) clearInterval(uhr); else if (bilder.length > 1) starten();
+  });
+
+  suchen(1);
+})();
+</script>
 </body>
 </html>
