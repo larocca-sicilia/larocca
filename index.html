@@ -530,6 +530,10 @@ h2 {
   align-items: center;
 }
 .geschichte-text p + p { margin-top: 14px; }
+/* Zwei Fotos untereinander, auf jedem Gerät über die volle Spaltenbreite.
+   Nebeneinander waeren sie auf dem Handy nur 166 Pixel breit – da erkennt
+   man keine Gesichter mehr. */
+.geschichte-bilder { display: grid; gap: 14px; }
 .geschichte-bild {
   border-radius: 16px;
   overflow: hidden;
@@ -641,7 +645,7 @@ footer a:hover { color: var(--akzent); }
 
 @media (max-width: 860px) {
   .geschichte { grid-template-columns: 1fr; gap: 26px; }
-  .geschichte-bild { order: -1; }
+  .geschichte-bilder { order: -1; }
   .abhol-raster { grid-template-columns: 1fr; gap: 26px; }
   section { padding-block: 46px; }
   .hero-text { grid-template-columns: 1fr; gap: 24px; padding-block: 34px 44px; }
@@ -1071,11 +1075,19 @@ footer a:hover { color: var(--akzent); }
           &uuml;brig, das keiner mehr wollte.
         </p>
       </div>
-      <div>
+      <!-- Zwei eigene Fotos. Zum Austauschen einfach zwei Bilder mit genau
+           diesen Namen in den Ordner "bilder" hochladen, dann ersetzen sie
+           die Platzhalter und hier muss nichts geändert werden.
+           Gutes Format: 3:2 liegend, etwa 1500 x 1000 Pixel. -->
+      <div class="geschichte-bilder">
         <div class="geschichte-bild">
-          <img src="bilder/sortiment.jpg" alt="Zitrusfrüchte aus Sizilien">
+          <img src="bilder/wer-wir-sind-1.jpg" width="1200" height="800"
+               alt="Familie La Rocca" loading="lazy">
         </div>
-        <span class="bildhinweis" style="display:block; margin-top:8px">Symbolbild, KI-generiert</span>
+        <div class="geschichte-bild">
+          <img src="bilder/wer-wir-sind-2.jpg" width="1200" height="800"
+               alt="Familie La Rocca" loading="lazy">
+        </div>
       </div>
     </div>
   </div>
