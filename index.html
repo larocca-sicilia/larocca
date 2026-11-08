@@ -616,6 +616,31 @@ h2 {
 .abhol-feld p { line-height: 1.6; }
 .abhol-feld a { color: var(--text); text-decoration-color: var(--rahmen); text-underline-offset: 3px; }
 
+/* Anfahrt: eigene Skizze links, die Schritte in Worten rechts */
+.anfahrt {
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  gap: 38px;
+  align-items: center;
+  margin-top: 44px;
+  padding-top: 40px;
+  border-top: 1px solid var(--linie);
+}
+.anfahrt-bild { margin: 0; }
+.anfahrt-bild img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 2px solid var(--rahmen);
+}
+.anfahrt-schritte { margin: 0; padding-left: 21px; line-height: 1.6; }
+.anfahrt-schritte li { margin-bottom: 11px; }
+.anfahrt-schritte li:last-child { margin-bottom: 0; }
+.anfahrt-schritte li::marker { color: var(--akzent); font-weight: 700; }
+.anfahrt-notiz { margin-top: 16px; font-size: 16px; color: var(--gedaempft); }
+
 /* ---------------- Schluss ---------------- */
 
 .schluss { padding-block: 58px; text-align: center; }
@@ -647,6 +672,7 @@ footer a:hover { color: var(--akzent); }
   .geschichte { grid-template-columns: 1fr; gap: 26px; }
   .geschichte-bilder { order: -1; }
   .abhol-raster { grid-template-columns: 1fr; gap: 26px; }
+  .anfahrt { grid-template-columns: 1fr; gap: 26px; margin-top: 34px; padding-top: 30px; }
   section { padding-block: 46px; }
   .hero-text { grid-template-columns: 1fr; gap: 24px; padding-block: 34px 44px; }
   .leiste-nav { display: none; }
@@ -1121,6 +1147,28 @@ footer a:hover { color: var(--akzent); }
           <a href="tel:+491728401626">0172 8401626</a><br>
           auch per WhatsApp<br>
           <a href="mailto:info@larocca-sicilia.de">info@larocca-sicilia.de</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="anfahrt" id="anfahrt">
+      <figure class="anfahrt-bild">
+        <img src="bilder/anfahrt.svg" width="800" height="800" loading="lazy"
+             alt="Skizze der Anfahrt: von der Offenbacher Landstraße in die Straße
+                  Auf das Loh, am REWE vorbei, dann links auf den Betriebshof Tunc Trans">
+      </figure>
+      <div class="abhol-feld anfahrt-text">
+        <h3>So findest du uns</h3>
+        <ol class="anfahrt-schritte">
+          <li>Von der <b>Offenbacher Landstra&szlig;e</b> in die Stra&szlig;e
+              <b>Auf das Loh</b> einbiegen &mdash; direkt am REWE.</li>
+          <li>Der Stra&szlig;e folgen und nach etwa 300&nbsp;Metern
+              <b>links auf den Betriebshof Tunc Trans</b>.</li>
+          <li>Auf dem Hof hinten links &mdash; dort stehen wir.</li>
+        </ol>
+        <p class="anfahrt-notiz">
+          Wenn du am Bauhof Hainstadt ankommst, bist du zu weit gefahren.
+          Du findest uns nicht? Ruf einfach an: <a href="tel:+491728401626">0172 8401626</a>.
         </p>
       </div>
     </div>
