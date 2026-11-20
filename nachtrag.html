@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>La Rocca – Nachtrag</title>
+  <meta name="robots" content="noindex">
+
+  <link rel="icon" href="https://larocca-sicilia.de/bilder/favicon.png">
+
+  <!-- Symbol beim "Zum Home-Bildschirm hinzufügen" -->
+  <link rel="apple-touch-icon" href="https://larocca-sicilia.de/bilder/app-icon.png">
+  <meta name="apple-mobile-web-app-title" content="Nachtrag">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #fdf2e9; color: #d35400;
+      display: flex; align-items: center; justify-content: center;
+      height: 100vh; margin: 0; text-align: center;
+    }
+    p { padding: 0 26px; line-height: 1.55; }
+  </style>
+</head>
+<body>
+
+  <p id="text"><b>Einen Moment, du wirst weitergeleitet …</b></p>
+
+  <!--
+     Der App Code steht BEWUSST NICHT in dieser Datei, sondern hinter dem
+     # in deinem eigenen Link. Alles hinter dem # schickt der Browser nie
+     an einen Server - es steht in keinem Protokoll und in keinem Repo.
+
+     Dein Link für den Home-Bildschirm:
+         https://larocca-sicilia.de/nachtrag.html#DEINAPPCODE
+  -->
+  <script>
+    var roh = location.hash.slice(1);
+    var code = '';
+    try { code = decodeURIComponent(roh); } catch (e) { code = roh; }
+    code = code.trim();
+
+    if (code) {
+      location.replace(
+        'https://script.google.com/macros/s/' +
+        'AKfycbwqmzzx5abuDxQo4bh8SDc72g_uyU2PuiguBdLNrqLWCYlBJ-joYypsgjv00tu_-9lT' +
+        '/exec?nach=' + encodeURIComponent(code)
+      );
+    } else {
+      document.getElementById('text').innerHTML =
+        '<b>Kein Code im Link.</b><br>' +
+        'Richtig ist: …/nachtrag.html<b>#DEINCODE</b>';
+    }
+  </script>
+
+</body>
+</html>
